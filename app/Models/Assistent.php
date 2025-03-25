@@ -6,17 +6,16 @@ use App\Models\Usuaris;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class Empresa extends Model
+class Assistent extends Model
 {
     use HasFactory;
 
-    protected $table = "emrpreses";
+    protected $table = "assistents";
     protected $primary_key = "id_usuaris";
-    public $timestamps = false;
+    public $timestamp = false;
 
     public function usuari()
     {
         return $this->belongsTo(Usuaris::class, 'id_usuaris', 'id_usuaris');
     }
-
 }

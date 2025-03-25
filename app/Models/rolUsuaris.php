@@ -12,19 +12,13 @@ class rolUsuaris extends Model
 
     protected $table = "rol_usuaris";
     protected $primary_key = "id_rol_usuaris";
-
     public $timestamps = false;
 
-
-
-    /**
-     * Get the user that owns the rolUsuaris
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
-    public function user()
+    public function Usuaris()
     {
-        return $this->belongsTo(User::class, 'foreign_key', 'other_key');
+        return $this->hasMany(Usuaris::class, 'id_rol_usuaris');
     }
+
+
 }
 
