@@ -2,9 +2,15 @@
 *{
     margin: 0;
     padding: 0;
-    text-decoration: none;
+    text-decoration: none !important;
     list-style: none;
     color: white;
+}
+a{
+    color: white;
+}
+body{
+    background-color: #120210;
 }
 h1{
     text-align: center;
@@ -29,9 +35,10 @@ p{
 hr{
     width: 50%;
     padding: 5px;
-    margin: 0 auto;
+    margin: auto;
     background-color: #800F75;
     border-color: #800F75;
+    opacity: 100%;
 }
 .palabras-moradas{
     color: #800F75;
@@ -50,7 +57,6 @@ hr{
     align-items: center;
 }
 .menu-principal{
-    flex: 1;
     display: flex;
     justify-content: flex-end;
     align-items: center;
@@ -58,12 +64,14 @@ hr{
 .menu-principal ul{
     display: flex;
     align-items: center;
+    margin-bottom: 0rem;
 }
-.menu-principal ul li{
+.menu-principal li{
     display: flex;
     align-items: center;
+    padding: 20px;
 }
-.menu-principal ul li a{
+.menu-principal a{
     align-items: center;
 }
 .img-logo-header{
@@ -71,17 +79,43 @@ hr{
 }
 .img-icono{
     width: 20px;
-}
-/* Main */
-.main-general{
-    background-color: #120210;
+    align-items: center;
+    margin-right: 8px;
 }
 /* Footer */
 .footer-general{
     background-color: #800F75;
+    display: flex;
+    justify-content: space-around;
 }
-
+.div-logo-footer{
+    display: flex;
+    align-items: center;
+    width: 40%;
+    justify-content: center;
+}
+.barra-vertical{
+    width: 10px;
+    margin: 1%;
+    background-color: #B715A6;
+    align-items: center;
+}
+.enlaces-footer{
+    display: flex;
+    align-items: center;
+    width: 40%;
+}
+.enlaces-footer ul{
+    width: 80%;
+}
+.enlaces-footer li {
+    margin: 10%;
+}
+.img-logo-footer{
+    width: 200px;
+}
 /* HOME */
+
 .container-home{
     align-items: center;
     display: flex;
@@ -98,4 +132,18 @@ hr{
 }
 .titulo, .subtitulo{
     padding: 10px;
+}
+.container-eventos{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.card-evento{
+    padding: 1%;
+    margin: 2%;
+    border-radius: 15px;
+    background-color: #800F75;
+}
+.img-evento{
+    width: 400px;
 }
