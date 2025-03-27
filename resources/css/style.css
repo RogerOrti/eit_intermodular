@@ -5,6 +5,7 @@
     text-decoration: none !important;
     list-style: none;
     color: white;
+    font-family: 'Lora';
 }
 a{
     color: white;
@@ -27,7 +28,8 @@ h4{
     font-size: 28px;
 }
 h5{
-
+    font-size: 25px;
+    font-weight: bold;
 }
 p{
 
@@ -35,13 +37,26 @@ p{
 hr{
     width: 50%;
     padding: 5px;
-    margin: auto;
+    margin: 3% 2% 0% 2%;
     background-color: #800F75;
     border-color: #800F75;
-    opacity: 100%;
 }
 .palabras-moradas{
     color: #800F75;
+}
+.btn-general, .btn-ver-mas{
+    padding: 5px 30px 5px 30px;
+    border-radius: 80px;
+    font-weight: bold;
+    cursor: pointer;
+    border: 2px solid #B715A6;
+    text-align: center;
+}
+.btn-general{
+    background-color: #B715A6;
+}
+.btn-general:hover{
+    border-color: white;
 }
 /* header */
 .header-general{
@@ -64,7 +79,6 @@ hr{
 .menu-principal ul{
     display: flex;
     align-items: center;
-    margin-bottom: 0rem;
 }
 .menu-principal li{
     display: flex;
@@ -72,6 +86,9 @@ hr{
     padding: 20px;
 }
 .menu-principal a{
+    align-items: center;
+}
+.menu-principal img{
     align-items: center;
 }
 .img-logo-header{
@@ -114,8 +131,8 @@ hr{
 .img-logo-footer{
     width: 200px;
 }
-/* HOME */
 
+/* HOME */
 .container-home{
     align-items: center;
     display: flex;
@@ -126,6 +143,9 @@ hr{
     text-align: center;
     align-items: center;
     width: 55%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
 }
 .img-carrusel{
     width: 100%;
@@ -133,17 +153,63 @@ hr{
 .titulo, .subtitulo{
     padding: 10px;
 }
+.div-prox-eventos{
+    justify-content: center;
+    flex-wrap: wrap;
+    display: flex;
+}
+.div-prox-eventos h3{
+    margin: 2%;
+}
 .container-eventos{
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
 }
 .card-evento{
-    padding: 1%;
-    margin: 2%;
-    border-radius: 15px;
+    padding: 15px;
+    margin: 1.5%;
     background-color: #800F75;
+}
+.card-evento:hover{
+    transform: translateY(-10px);
+    cursor: pointer;
+}
+.card-evento div{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 .img-evento{
     width: 400px;
 }
+.card-evento, .img-evento{
+    border-radius: 15px;
+}
+.elemento-card{
+    margin-top: 10px;
+}
+.btn-ver-mas{
+    color: #B715A6;
+    margin-bottom: 2%;
+}
+.btn-ver-mas:hover{
+    background-color: #B715A6;
+    color: white;
+}
+.solicitar-evento{
+    width: 100%;
+    height: 250px;
+    background-color: #800F75;
+    text-align: center;
+    align-items: center;
+}
+.container-valores{
+    display: flex;
+    padding: 150px;
+    justify-content: space-between;
+}
+.div-valores{
+    padding: 50px;
+}
+

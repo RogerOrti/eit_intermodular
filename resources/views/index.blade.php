@@ -13,7 +13,10 @@
             </div>
             <div class="info-home">
                 <!-- Carrusel de imágenes -->
-                <img class="img-carrusel" src="{{ asset('media/eventoPrincipal.png')}}" alt="">
+                <div class="carrusel">
+                    <img class="img-carrusel" src="{{ asset('media/eventoPrincipal.png')}}" alt="">
+                </div>
+
                 <div class="subtitulo">
                     <h2>
                         Todo lo necesario para <span class="palabras-moradas">crear</span> y
@@ -32,56 +35,70 @@
                 <hr>
             </div>
         </div>
-
-        <h3>Próximos eventos</h3>
-        <div class="container-eventos">
-            <div class="card-evento">
-                <img class="img-evento" src="{{ asset('media/eventoPrincipal.png')}}" alt="">
-                <h5>MWC Barcelona</h5>
-                <p>03/03/2025 - 06/03/2025</p>
-                <p>Fira Barcelona</p>
-                <a href="">TICKETS</a>
+        <div class="div-prox-eventos">
+            <h3>Próximos eventos</h3>
+            <div class="container-eventos">
+                <div class="card-evento">
+                    <img class="img-evento" src="{{ asset('media/eventoPrincipal.png')}}" alt="">
+                    <h5 class="elemento-card">MWC Barcelona</h5>
+                    <p class="elemento-card">03/03/2025 - 06/03/2025</p>
+                    <div class="elemento-card">
+                        <p>Fira Barcelona</p>
+                        <a class="btn-general" href="">TICKETS</a>
+                    </div>
+                </div>
+                <div class="card-evento">
+                    <img class="img-evento" src="{{ asset('media/eventoPrincipal.png')}}" alt="">
+                    <h5 class="elemento-card">MWC Barcelona</h5>
+                    <p class="elemento-card">03/03/2025 - 06/03/2025</p>
+                    <div class="elemento-card">
+                        <p>Fira Barcelona</p>
+                        <a class="btn-general" href="">TICKETS</a>
+                    </div>
+                </div>
+                <div class="card-evento">
+                    <img class="img-evento" src="{{ asset('media/eventoPrincipal.png')}}" alt="">
+                    <h5 class="elemento-card">MWC Barcelona</h5>
+                    <p class="elemento-card">03/03/2025 - 06/03/2025</p>
+                    <div class="elemento-card">
+                        <p>Fira Barcelona</p>
+                        <a class="btn-general" href="">TICKETS</a>
+                    </div>
+                </div>
+                <div class="card-evento">
+                    <img class="img-evento" src="{{ asset('media/eventoPrincipal.png')}}" alt="">
+                    <h5 class="elemento-card">MWC Barcelona</h5>
+                    <p class="elemento-card">03/03/2025 - 06/03/2025</p>
+                    <div class="elemento-card">
+                        <p>Fira Barcelona</p>
+                        <a class="btn-general" href="">TICKETS</a>
+                    </div>
+                </div>
+                <div class="card-evento">
+                    <img class="img-evento" src="{{ asset('media/eventoPrincipal.png')}}" alt="">
+                    <h5 class="elemento-card">MWC Barcelona</h5>
+                    <p class="elemento-card">03/03/2025 - 06/03/2025</p>
+                    <div class="elemento-card">
+                        <p>Fira Barcelona</p>
+                        <a class="btn-general" href="">TICKETS</a>
+                    </div>
+                </div>
+                <div class="card-evento">
+                    <img class="img-evento" src="{{ asset('media/eventoPrincipal.png')}}" alt="">
+                    <h5 class="elemento-card">MWC Barcelona</h5>
+                    <p class="elemento-card">03/03/2025 - 06/03/2025</p>
+                    <div class="elemento-card">
+                        <p>Fira Barcelona</p>
+                        <a class="btn-general" href="">TICKETS</a>
+                    </div>
+                </div>
             </div>
-            <div class="card-evento">
-                <img class="img-evento "src="{{ asset('media/eventoPrincipal.png')}}" alt="">
-                <h5>MWC Barcelona</h5>
-                <p>03/03/2025 - 06/03/2025</p>
-                <p>Fira Barcelona</p>
-                <a href="">TICKETS</a>
-            </div>
-            <div class="card-evento">
-                <img class="img-evento" src="{{ asset('media/eventoPrincipal.png')}}" alt="">
-                <h5>MWC Barcelona</h5>
-                <p>03/03/2025 - 06/03/2025</p>
-                <p>Fira Barcelona</p>
-                <a href="">TICKETS</a>
-            </div>
-            <div class="card-evento">
-                <img class="img-evento" src="{{ asset('media/eventoPrincipal.png')}}" alt="">
-                <h5>MWC Barcelona</h5>
-                <p>03/03/2025 - 06/03/2025</p>
-                <p>Fira Barcelona</p>
-                <a href="">TICKETS</a>
-            </div>
-            <div class="card-evento">
-                <img class="img-evento" src="{{ asset('media/eventoPrincipal.png')}}" alt="">
-                <h5>MWC Barcelona</h5>
-                <p>03/03/2025 - 06/03/2025</p>
-                <p>Fira Barcelona</p>
-                <a href="">TICKETS</a>
-            </div>
-            <div class="card-evento">
-                <img class="img-evento" src="{{ asset('media/eventoPrincipal.png')}}" alt="">
-                <h5>MWC Barcelona</h5>
-                <p>03/03/2025 - 06/03/2025</p>
-                <p>Fira Barcelona</p>
-                <a href="">TICKETS</a>
-            </div>
+            <a class="btn-ver-mas" href="">Ver más</a>
         </div>
-        <a href="">Ver más</a>
+
         <div class="solicitar-evento">
             <h3>¡Quiero crear un evento!</h3>
-            <a href="">SOLICITAR</a>
+            <a class="btn-general" href="">SOLICITAR</a>
         </div>
         <div class="container-valores">
             <div class="div-valores">
