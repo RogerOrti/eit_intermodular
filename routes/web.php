@@ -12,11 +12,28 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
 Route::get('/', function () {
-    return view(view: 'index');
-});
+    return view('index'); // Para la vista index.blade.php
+})->name('home');
 
-// Route::get('/hola', function () {
-//     return view(view: 'layouts.principal');
-// });
+Route::get('/eventos', function () {
+    return view('eventos'); // Para la vista eventos.blade.php
+})->name('eventos');
+
+Route::get('/about-us', function () {
+    return view('aboutUs'); // Para la vista about.blade.php
+})->name('about');
+
+Route::get('/login', function () {
+    return view('login'); // Para la vista login.blade.php
+})->name('login');
+Route::get('/tickets', function () {
+    return view('tickets'); // Para la vista login.blade.php
+})->name('tickets');
+Route::get('/evento', function () {
+    return view('evento'); // Para la vista login.blade.php
+})->name('evento');
+Route::get('/crearevento', function () {
+    return view('crearevento'); // Para la vista login.blade.php
+})->name('crearevento');
+

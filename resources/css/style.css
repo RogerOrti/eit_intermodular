@@ -32,12 +32,12 @@ h5{
     font-weight: bold;
 }
 p{
-
+    font-size: 18px;
 }
 hr{
     width: 50%;
     padding: 5px;
-    margin: 3% 2% 0% 2%;
+    margin: 3% 2% 3% 2%;
     background-color: #800F75;
     border-color: #800F75;
 }
@@ -58,37 +58,32 @@ hr{
 .btn-general:hover{
     border-color: white;
 }
+.centrar-elementos{
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
 /* header */
+.header-general, .div-logo, .menu-principal,
+.menu-principal ul, .menu-principal li{
+    display: flex;
+    align-items: center;
+}
 .header-general{
     width: 100%;
     background-color: #800F75;
-    display: flex;
-    align-items: center;
     justify-content: space-between;
 }
 .div-logo{
-    display: flex;
     justify-content: flex-start;
-    align-items: center;
 }
 .menu-principal{
-    display: flex;
     justify-content: flex-end;
-    align-items: center;
-}
-.menu-principal ul{
-    display: flex;
-    align-items: center;
 }
 .menu-principal li{
-    display: flex;
-    align-items: center;
     padding: 20px;
 }
-.menu-principal a{
-    align-items: center;
-}
-.menu-principal img{
+.menu-principal a .menu-principal img, .img-icono{
     align-items: center;
 }
 .img-logo-header{
@@ -96,7 +91,6 @@ hr{
 }
 .img-icono{
     width: 20px;
-    align-items: center;
     margin-right: 8px;
 }
 /* Footer */
@@ -106,10 +100,7 @@ hr{
     justify-content: space-around;
 }
 .div-logo-footer{
-    display: flex;
-    align-items: center;
     width: 40%;
-    justify-content: center;
 }
 .barra-vertical{
     width: 10px;
@@ -133,19 +124,12 @@ hr{
 }
 
 /* HOME */
-.container-home{
-    align-items: center;
-    display: flex;
-    justify-content: center;
+.container-home, .info-home{
     flex-direction: column;
 }
 .info-home{
     text-align: center;
-    align-items: center;
     width: 55%;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
 }
 .img-carrusel{
     width: 100%;
@@ -153,18 +137,11 @@ hr{
 .titulo, .subtitulo{
     padding: 10px;
 }
-.div-prox-eventos{
-    justify-content: center;
+.div-prox-eventos, .container-eventos{
     flex-wrap: wrap;
-    display: flex;
 }
 .div-prox-eventos h3{
     margin: 2%;
-}
-.container-eventos{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
 }
 .card-evento{
     padding: 15px;
@@ -201,15 +178,27 @@ hr{
     width: 100%;
     height: 250px;
     background-color: #800F75;
-    text-align: center;
-    align-items: center;
+    flex-direction: column;
+}
+.solicitar-evento h3, .solicitar-evento a{
+    margin: 1%;
 }
 .container-valores{
     display: flex;
-    padding: 150px;
+    flex-wrap: wrap;
+    padding: 80px;
     justify-content: space-between;
 }
 .div-valores{
     padding: 50px;
+    text-align: center;
+    width: 300px;
+}
+.div-valores p, .img-valores{
+    margin: 2%;
+}
+.img-valores{
+    width: 150px;
 }
 
+/* EVENTOS */
