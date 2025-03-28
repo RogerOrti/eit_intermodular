@@ -27,12 +27,15 @@ Route::get('/about-us', function () {
 Route::get('/login', function () {
     return view('login'); // Para la vista login.blade.php
 })->name('login');
+
 Route::get('/tickets', function () {
     return view('tickets'); // Para la vista login.blade.php
 })->name('tickets');
+
 Route::get('/evento', function () {
     return view('evento'); // Para la vista login.blade.php
 })->name('evento');
+
 Route::get('/crearevento', function () {
     return view('crearevento'); // Para la vista login.blade.php
 })->name('crearevento');
