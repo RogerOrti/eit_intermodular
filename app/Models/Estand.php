@@ -12,4 +12,15 @@ class Estand extends Model
     protected $table = "estands";
     protected $primary_key = "id_estands";
     public $timestamp = false;
+
+    public function exposicio()
+    {
+        return $this->belongsTo(User::class, 'foreign_key', 'other_key');
+    }
+
+    public function Horari()
+    {
+        return $this->belongsToMany(Horari::class,"horaris_has_estands", "horaris_id_horaris", "estands_id_estands");
+    }
 }
+

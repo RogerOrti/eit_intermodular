@@ -7,7 +7,7 @@
 @section('contingut')
 
     <div class="bg-primary">
-        hola
+        Adios
     </div>
     <div id="app">
         <prova></prova>

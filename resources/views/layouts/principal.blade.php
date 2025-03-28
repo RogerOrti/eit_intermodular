@@ -54,6 +54,11 @@
     <div class="container">
         @yield('contingut')
     </div>
+
+
+    <div>
+        @yield('contingut2')
+    </div>
 </body>
 
 </html>

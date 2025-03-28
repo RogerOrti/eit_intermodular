@@ -12,4 +12,10 @@ class Esdeveniment extends Model
     protected $table = "esdeveniments";
     protected $primary_key = "id_esdeveniment";
     public $timestamp = false;
+
+
+    public function Exposicio()
+    {
+        return $this->hasMany(Exposicio::class, 'id_exposicio');
+    }
 }
