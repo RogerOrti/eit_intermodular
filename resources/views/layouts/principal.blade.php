@@ -31,19 +31,11 @@
         <img class="img-logo-footer" src="{{ asset('media/logo.png')}}" alt="Imagen logo">
         <h2>EIT</h2>
     </div>
-    <div class= "barra-vertical"></div>
-    <div class="enlaces-footer">
-        <ul>
-            <li><a href="">Home</a></li>
-            <li><a href="">Eventos</a></li>
-            <li><a href="">About us</a></li>
-        </ul>
-        <ul>
-            <li>Legal</li>
-            <li>Privacity Policity</li>
-            <li>Cookies Policity</li>
-        </ul>
+
+
+    <div>
+        @yield('contingut2')
     </div>
-</footer>
+
 </body>
 </html>

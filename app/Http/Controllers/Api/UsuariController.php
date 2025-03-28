@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\UsuariResource;
 use App\Models\Usuaris;
 use Illuminate\Http\Request;
 
@@ -13,7 +14,9 @@ class UsuariController extends Controller
      */
     public function index()
     {
-        //
+        $usuari = Usuaris::all();
+
+        return UsuariResource::collection($usuari);
     }
 
     /**
@@ -21,7 +24,19 @@ class UsuariController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        try {
+
+            $usuari = new Usuaris();
+
+            $usuari->
+
+            $usuari->save();
+
+        } catch (\Throwable $th) {
+            
+        }
+
     }
 
     /**

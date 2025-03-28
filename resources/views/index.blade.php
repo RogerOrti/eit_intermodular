@@ -17,6 +17,7 @@
                     <img class="img-carrusel" src="{{ asset('media/eventoPrincipal.png')}}" alt="">
                 </div>
 
+
                 <div class="subtitulo">
                     <h2>
                         Todo lo necesario para <span class="palabras-moradas">crear</span> y
@@ -117,5 +118,6 @@
             </div>
         </div>
     </main>
+
 
 @endsection
