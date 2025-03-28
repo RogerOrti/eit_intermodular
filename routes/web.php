@@ -16,3 +16,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view(view: 'index');
 });
+
+// Route::get('/hola', function () {
+//     return view(view: 'layouts.principal');
+// });
