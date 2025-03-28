@@ -12,4 +12,9 @@ class TipusExposicio extends Model
     protected $table = "tipus_exposicions";
     protected $primary_key = "id_tipus_exposicions";
     public $timestamp = false;
+
+    public function Exposicions()
+    {
+        return $this->hasMany(Exposicio::class, 'id_tipus_exposicions');
+    }
 }

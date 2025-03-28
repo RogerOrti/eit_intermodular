@@ -27,6 +27,9 @@
 </header>
 @yield('home')
 @yield('eventos')
+<div>
+  @yield('contingut2')
+</div>
 <footer class="footer-general">
     <div class="div-logo-footer centrar-elementos">
         <img class="img-logo-footer" src="{{ asset('media/logo.png')}}" alt="Imagen logo">
@@ -46,5 +49,6 @@
         </ul>
     </div>
 </footer>
+
 </body>
 </html>
