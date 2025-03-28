@@ -18,25 +18,26 @@
     </div>
     <nav class="menu-principal">
         <ul>
-            <li><a href=""><img class="img-icono" src="{{ asset('media/iconoHogar.png')}}" alt="Icono hogar">Home</a></li>
-            <li><a href=""><img class="img-icono" src="{{ asset('media/iconoCalendario.png')}}" alt="Icono calendario">Eventos</a></li>
-            <li><a href=""><img class="img-icono" src="{{ asset('media/iconoUsuarios.png')}}" alt="Icono usuarios">About us</a></li>
-            <li><a href=""><img class="img-icono" src="{{ asset('media/iconoUsuario.png')}}" alt="Icono usuario">Iniciar sesión</a></li>
+            <li><a href="{{ route('home') }}"><img class="img-icono" src="{{ asset('media/iconoHogar.png')}}" alt="Icono hogar">Home</a></li>
+            <li><a href="{{ route('eventos') }}"><img class="img-icono" src="{{ asset('media/iconoCalendario.png')}}" alt="Icono calendario">Eventos</a></li>
+            <li><a href="{{ route('about') }}"><img class="img-icono" src="{{ asset('media/iconoUsuarios.png')}}" alt="Icono usuarios">About us</a></li>
+            <li><a href="{{ route('login') }}"><img class="img-icono" src="{{ asset('media/iconoUsuario.png')}}" alt="Icono usuario">Iniciar sesión</a></li>
         </ul>
     </nav>
 </header>
 @yield('home')
+@yield('eventos')
 <footer class="footer-general">
-    <div class="div-logo-footer">
+    <div class="div-logo-footer centrar-elementos">
         <img class="img-logo-footer" src="{{ asset('media/logo.png')}}" alt="Imagen logo">
         <h2>EIT</h2>
     </div>
     <div class= "barra-vertical"></div>
     <div class="enlaces-footer">
         <ul>
-            <li><a href="">Home</a></li>
-            <li><a href="">Eventos</a></li>
-            <li><a href="">About us</a></li>
+            <li><a href="{{ route('home') }}">Home</a></li>
+            <li><a href="{{ route('eventos') }}">Eventos</a></li>
+            <li><a href="{{ route('about') }}">About us</a></li>
         </ul>
         <ul>
             <li>Legal</li>
