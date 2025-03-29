@@ -29,14 +29,14 @@ Route::get('/login', function () {
 })->name('login');
 
 Route::get('/tickets', function () {
-    return view('tickets'); // Para la vista login.blade.php
+    return view('tickets'); // Para la vista tickets.blade.php
 })->name('tickets');
 
 Route::get('/evento', function () {
-    return view('evento'); // Para la vista login.blade.php
+    return view('evento'); // Para la vista evento.blade.php
 })->name('evento');
 
 Route::get('/crearevento', function () {
-    return view('crearevento'); // Para la vista login.blade.php
+    return view('crearevento'); // Para la vista crearEvento.blade.php
 })->name('crearevento');
 
