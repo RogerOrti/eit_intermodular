@@ -18,4 +18,9 @@ class Assistent extends Model
     {
         return $this->belongsTo(Usuaris::class, 'id_usuaris', 'id_usuaris');
     }
+
+    public function Entrada()
+    {
+        return $this->belongsTo(Entrada::class);
+    }
 }

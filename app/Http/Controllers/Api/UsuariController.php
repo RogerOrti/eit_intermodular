@@ -29,7 +29,12 @@ class UsuariController extends Controller
 
             $usuari = new Usuaris();
 
-            $usuari->
+            $usuari->nom = $request->input();
+            $usuari->correu_electronic = $request->input();
+            $usuari->contrasenya = $request->input();
+            $usuari->telefon = $request->input();
+            $usuari->tipus_usuari = $request->input();
+            $usuari->id_rol_usuaris = $request->input();
 
             $usuari->save();
 

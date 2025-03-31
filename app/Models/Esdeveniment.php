@@ -18,4 +18,9 @@ class Esdeveniment extends Model
     {
         return $this->hasMany(Exposicio::class, 'id_exposicio');
     }
+
+    public function Entrada()
+    {
+        return $this->belongsTo(Entrada::class, 'foreign_key', 'other_key');
+    }
 }

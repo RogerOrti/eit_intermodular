@@ -12,4 +12,13 @@ class Entrada extends Model
     protected $table = "tipus_empreses";
     protected $primary_key = ["id_assistent", "id_esdeveniment", "data"];
     public $timestamp = false;
+
+    public function assistent()
+    {
+        return $this->belongsTo(Assistent::class);
+    }
+    public function esdeveniment()
+    {
+        return $this->belongsTo(Esdeveniment::class);
+    }
 }
