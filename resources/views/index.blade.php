@@ -2,22 +2,18 @@
 
 @section('titol', 'Home')
 
-
-
 @section('home')
     <main class="main-general">
-        <div class="container-home centrar-elementos">
+        <div class="container-general centrar-elementos">
             <div class="titulo">
                 <h1>ORGANIZACIÓN DE</h1>
                 <h1>EVENTOS TECNOLÓGICOS</h1>
             </div>
-            <div class="info-home centrar-elementos">
+            <div class="div-info centrar-elementos">
                 <!-- Carrusel de imágenes -->
                 <div class="carrusel">
                     <img class="img-carrusel" src="{{ asset('media/eventoPrincipal.png')}}" alt="">
                 </div>
-
-
                 <div class="subtitulo">
                     <h2>
                         Todo lo necesario para <span class="palabras-moradas">crear</span> y

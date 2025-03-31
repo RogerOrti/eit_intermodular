@@ -124,10 +124,10 @@ hr{
 }
 
 /* HOME */
-.container-home, .info-home{
+.container-general, .div-info{
     flex-direction: column;
 }
-.info-home{
+.div-info{
     text-align: center;
     width: 55%;
 }
@@ -202,3 +202,22 @@ hr{
 }
 
 /* EVENTOS */
+.container-filtros{
+    /* width: 25%; */
+    border-radius: 15px;
+    background-color: #800F75;
+    padding: 20px;
+    margin: 20px;
+}
+.titulo-filtros{
+    display: flex;
+    align-items: center;
+}
+.titulo-filtros img{
+    margin-right: 15px;
+}
+.div-filtros{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
