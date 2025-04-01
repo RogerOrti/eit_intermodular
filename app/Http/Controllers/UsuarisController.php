@@ -7,6 +7,43 @@ use Illuminate\Http\Request;
 
 class UsuarisController extends Controller
 {
+
+    public function showRegister(){
+
+        return view('auth.register');
+    }
+
+    public function showLogin(){
+
+        return view('auth.login');
+    }
+
+    public function login(Request $request){
+
+        $nomUsuari = $request->input('correu');
+        $contrasenya = $request->input('contrasenya');
+
+        $usuari = Usuaris::where('nom',$nomUsuari)->first();
+
+        if($usuari != null && Hash::check($contrasenya, $usuari->contrasenya)){
+            Auth::login($usuari);
+            $request->session()->flash('usuari', $usuari);
+            $response = redirect('/');
+        }
+        else{
+            $request->session()->flash('error','Usuari o contrasenya incorrectes');
+            $response = redirect('/');
+        }
+
+        return $response;
+    }
+
+    public function logout(){
+
+        
+
+    }
+
     /**
      * Display a listing of the resource.
      */
