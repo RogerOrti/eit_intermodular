@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\EmpresaResource;
+use App\Models\Empresa;
 use Illuminate\Http\Request;
 
 class EmpresaController extends Controller
@@ -12,7 +14,9 @@ class EmpresaController extends Controller
      */
     public function index()
     {
-        //
+        $empresa = Empresa::all();
+
+        return EmpresaResource::collection($empresa);
     }
 
     /**
