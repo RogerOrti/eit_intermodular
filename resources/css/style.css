@@ -221,3 +221,12 @@ hr{
     flex-direction: column;
     justify-content: center;
 }
+.tipo-flitro h5{
+    margin: 20px 0px 20px 0px;
+}
+.tipo-flitro div a{
+    margin: 0px 20px 0px 0px;
+}
+.btn-filtros{
+    padding: 5px 50px 5px 50px;
+}

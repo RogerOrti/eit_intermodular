@@ -20,7 +20,7 @@
         </div>
         <div class="div-prox-eventos">
             <h3>Próximos eventos</h3>
-            <div class="container-filtros">
+            <div class="container-filtros centrar-elememtos">
                 <div class="titulo-filtros">
                     <img src="{{ asset('media/iconoFiltros.png')}}" alt="Icono filtros">
                     <h5>Filtros</h5>
@@ -29,20 +29,20 @@
                     <div class="tipo-flitro">
                         <h5>Tipología</h5>
                         <div>
-                            <a class="btn-general" href="">Todo</a>
-                            <a class="btn-general" href="">Tecnológia</a>
-                            <a class="btn-general" href="">Informática</a>
+                            <a class="btn-filtros btn-general " href="">Todo</a>
+                            <a class="btn-general btn-filtros" href="">Tecnológia</a>
+                            <a class="btn-general btn-filtros" href="">Informática</a>
                         </div>
                     </div>
                     <div class="tipo-flitro">
                         <h5>Recinto</h5>
                         <div>
-                            <a class="btn-general" href="">Todo</a>
-                            <a class="btn-general" href="">Fira Monjuic</a>
-                            <a class="btn-general" href="">Fira Gran Via</a>
-                            <a class="btn-general" href="">Fira Cornellà</a>
-                            <a class="btn-general" href="">Fira Hospitalet</a>
-                            <a class="btn-general" href="">Fira Sabadell</a>
+                            <a class="btn-general btn-filtros" href="">Todo</a>
+                            <a class="btn-general btn-filtros" href="">Fira Monjuic</a>
+                            <a class="btn-general btn-filtros" href="">Fira Gran Via</a>
+                            <a class="btn-general btn-filtros" href="">Fira Cornellà</a>
+                            <a class="btn-general btn-filtros" href="">Fira Hospitalet</a>
+                            <a class="btn-general btn-filtros" href="">Fira Sabadell</a>
                         </div>
                     </div>
                     <div class="tipo-flitro">
