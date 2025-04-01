@@ -4,8 +4,8 @@ import * as bootstrap from 'bootstrap'
 
 import { createApp } from 'vue';
 
-import prova from './components/prova.vue';
+import registerVue from './components/auth/register.vue';
 
 const app = createApp({});
-app.component('prova', prova);
+app.component('register', registerVue);
 app.mount('#app');

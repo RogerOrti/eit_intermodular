@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UsuarisController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -24,9 +26,10 @@ Route::get('/about-us', function () {
     return view('aboutUs'); // Para la vista about.blade.php
 })->name('about');
 
-Route::get('/login', function () {
-    return view('login'); // Para la vista login.blade.php
-})->name('login');
+Route::get('/register', [UsuarisController::class,'showRegister'])->name('showRegister');
+
+Route::get('/login', [UsuarisController::class, 'showLogin'])->name('showLogin');
+Route::post('/login', [UsuarisController::class, 'login'])->name('login');
 
 Route::get('/tickets', function () {
     return view('tickets'); // Para la vista tickets.blade.php

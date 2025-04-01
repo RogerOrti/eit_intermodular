@@ -3,20 +3,20 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Http\Resources\AssistentResource;
-use App\Models\Assistent;
+use App\Http\Resources\TipusEmpresaResource;
+use App\Models\TipusEmpresa;
 use Illuminate\Http\Request;
 
-class AssistentController extends Controller
+class TipusEmpresaController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $assistent = Assistent::all();
+        $entrada = TipusEmpresa::all();
 
-        return AssistentResource::collection($assistent);
+        return TipusEmpresaResource::collection($entrada);
     }
 
     /**
@@ -30,7 +30,7 @@ class AssistentController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Assistent $assistent)
+    public function show(TipusEmpresa $tipusEmpresa)
     {
         //
     }
@@ -38,7 +38,7 @@ class AssistentController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Assistent $assistent)
+    public function update(Request $request, TipusEmpresa $tipusEmpresa)
     {
         //
     }
@@ -46,7 +46,7 @@ class AssistentController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Assistent $assistent)
+    public function destroy(TipusEmpresa $tipusEmpresa)
     {
         //
     }
