@@ -31,7 +31,7 @@ h5{
     font-size: 25px;
     font-weight: bold;
 }
-p{
+p, button{
     font-size: 18px;
 }
 hr{
@@ -202,12 +202,32 @@ hr{
 }
 
 /* EVENTOS */
+.h1-eventos{
+    margin-bottom: 50px;
+}
+.container-prox-eventos{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
 .container-filtros{
-    /* width: 25%; */
+    width: 25%;
+    height: 30%;
     border-radius: 15px;
     background-color: #800F75;
     padding: 20px;
     margin: 20px;
+}
+.div-prox-eventos{
+    margin-bottom: 60px;
+}
+.div-prox-eventos h3{
+    text-align: center;
+}
+.eventos{
+    width: 60%;
+    display: flex;
+    justify-content: center;
 }
 .titulo-filtros{
     display: flex;
@@ -221,12 +241,15 @@ hr{
     flex-direction: column;
     justify-content: center;
 }
-.tipo-flitro h5{
+.categoria-flitro h5{
     margin: 20px 0px 20px 0px;
 }
-.tipo-flitro div a{
-    margin: 0px 20px 0px 0px;
+.tipo-categoria{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
 }
-.btn-filtros{
-    padding: 5px 50px 5px 50px;
+.tipo-categoria button{
+    margin: 10px;
+    width: 200px;
 }
