@@ -35,12 +35,12 @@ class UsuariController extends Controller
 
             $usuari = new Usuaris();
 
-            $usuari->nom = $request->input("");
-            $usuari->correu_electronic = $request->input("");
-            $usuari->contrasenya = $request->input("");
-            $usuari->telefon = $request->input("");
-            $usuari->tipus_usuari = $request->input("");
-            $usuari->id_rol_usuaris = $request->input("");
+            $usuari->nom = $request->input("nom");
+            $usuari->correu_electronic = $request->input("correu");
+            $usuari->contrasenya = $request->input("contrasenya");
+            $usuari->telefon = $request->input("telefon");
+            $usuari->tipus_usuari = $request->input("tipusUsuari");
+            $usuari->id_rol_usuaris = $request->input("tipusUsuari");
 
             $usuari->save();
 
@@ -49,9 +49,10 @@ class UsuariController extends Controller
             
                 $empresa = new Empresa();
 
-                $empresa->nif = $request->input();
-                $empresa->direccio = $request->input();
-                $empresa->id_tipus_empresa = $request->input();
+                $empresa->nif = $request->input("nif");
+                $empresa->direccio = $request->input("direccio");
+                $empresa->codiPostal = $request->input("codiPostal");
+                $empresa->id_tipus_empresa = $request->input("tipusEmpresa");
                 $empresa->id_usuaris = $usuari->id_usuaris;
 
                 $empresa->save();
@@ -61,13 +62,12 @@ class UsuariController extends Controller
                 
                 $assistent = new Assistent();
 
-                $assistent->dni = $request->input();
-                $assistent->cognom = $request->input();
+                $assistent->dni = $request->input("dni");
+                $assistent->cognom = $request->input("cognom");
                 $assistent->id_usuaris = $usuari->id_usuaris;
 
                 $assistent->save();
             }
-
 
             DB::commit();
 
