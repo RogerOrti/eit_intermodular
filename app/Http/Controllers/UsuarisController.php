@@ -20,7 +20,7 @@ class UsuarisController extends Controller
 
     public function login(Request $request){
 
-        $nomUsuari = $request->input('correu');
+        $nomUsuari = $request->input('nom');
         $contrasenya = $request->input('contrasenya');
 
         $usuari = Usuaris::where('nom',$nomUsuari)->first();

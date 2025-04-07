@@ -11,25 +11,32 @@
             </div>
             <div class="mb-3">
                 <label for="" class="form-label">Nom</label>
-                <input type="text" class="form-control" id="nom" name="nom" :value="usuari.nom">
+                <input type="text" class="form-control" :class="{'is-invalid': usuariErrors.nom}" id="nom" name="nom" v-model="usuari.nom" :value="usuari.nom" required>
             </div>
-            <div class="mb-3">
-                <label for="" class="form-label">Cognom</label>
-                <input type="text" class="form-control" id="cognom" name="cognom" :value="usuari.cognom">
+
+            <div v-if="usuari.tipusUsuari == 3">
+                <div class="mb-3">
+                    <label for="" class="form-label">Cognom</label>
+                    <input type="text" class="form-control" :class="{'is-invalid': usuariErrors.cognom}" id="cognom" name="cognom" v-model="usuari.cognom" :value="usuari.cognom" required>
+                </div>
             </div>
             <div class="mb-3">
                 <label for="" class="form-label">Correu electrónic</label>
-                <input type="email" class="form-control" id="correu" name="correu" :value="usuari.correu">
+                <input type="email" class="form-control" :class="{'is-invalid': usuariErrors.correu}" id="correu" name="correu" v-model="usuari.correu" :value="usuari.correu" required>
+            </div>
+            <div class="mb-3">
+                <label for="telefon" class="form-label">Teléfon</label>
+                <input type="text" class="form-control" :class="{'is-invalid': usuariErrors.telefon}" id="telefon" name="telefon" v-model="usuari.telefon" :value="usuari.telefon" required>
             </div>
             <div class="mb-3">
                 <label for="" class="form-label">Contrasenya</label>
-                <input type="password" class="form-control" id="contrasenya" name="contrasenya" :value="usuari.contrasenya">
+                <input type="password" class="form-control" :class="{'is-invalid': usuariErrors.contrasenya}" id="contrasenya" name="contrasenya" v-model="usuari.contrasenya" :value="usuari.contrasenya" required>
             </div>
             <div v-if="usuari.tipusUsuari == 2">
 
                 <div class="mb-3">
-                    <label for="">Tipus Empresa</label>
-                    <select name="" id="" class="form-control" v-model="usuari.tipusEmpresa">
+                    <label for="tipusEmpresa">Tipus Empresa</label>
+                    <select name="tipusEmpresa" id="tipusEmpresa" class="form-control" v-model="usuari.tipusEmpresa" required>
                         <option v-for="tipus in tipusEmpreses" :key="tipus.id_tipus_empreses" :value="tipus.tipus_empreses">
                             {{ tipus.tipus_empreses }}
                         </option>
@@ -37,26 +44,26 @@
                     </select>
                 <div class="mb-3">
                     <label for="" class="form-label">NIF</label>
-                    <input type="text" class="form-control" id="" name="" :value="usuari.nif">
+                    <input type="text" class="form-control" :class="{'is-invalid': usuariErrors.nif}" id="nif" name="nif" v-model="usuari.nif" :value="usuari.nif" required>
                 </div>
                 <div class="mb-3">
                     <label for="" class="form-label">Direcció</label>
-                    <input type="text" class="form-control" id="" name="" :value="usuari.direccio">
+                    <input type="text" class="form-control" :class="{'is-invalid': usuariErrors.direccio}" id="direccio" name="direccio" v-model="usuari.direccio" :value="usuari.direccio" required>
                 </div>
                 <div class="mb-3">
                     <label for="" class="form-label">Codi postal</label>
-                    <input type="text" class="form-control" id="" name="" :value="usuari.codiPostal">
+                    <input type="text" class="form-control" :class="{'is-invalid': usuariErrors.codiPostal}" id="codiPostal" name="codiPostal" v-model="usuari.codiPostal" :value="usuari.codiPostal" required>
                 </div>
                 </div>
             </div>
             <div v-else-if="usuari.tipusUsuari == 3">
                 <div class="mb-3">
                     <label for="" class="form-label">DNI</label>
-                    <input type="text" class="form-control" id="" name="" :value="usuari.dni">
+                    <input type="text" class="form-control" :class="{'is-invalid': usuariErrors.dni}" id="dni" name="dni" v-model="usuari.dni" :value="usuari.dni" required>
                 </div>
             </div>
             <div class="mt-3">
-                <button type="submit" class="btn btn-secondary" @change="guardarUsuari">Registrar</button>
+                <button @click="guardarUsuari" class="btn btn-secondary">Registrar</button>
             </div> 
         </form>
     </div>
@@ -75,6 +82,7 @@ export default {
                 nom: false,
                 cognom: false,
                 correu: false,
+                telefon: false,
                 contrasenya: false,
                 tipusEmpresa: false,
                 nif: false,
@@ -90,7 +98,7 @@ export default {
 
         guardarUsuari(){
 
-            this.validarDades(); // S'omple this.errors
+            this.validarDades();
 
             if (this.errors.length > 0) {
                 alert("Hi ha errors en el formulari:\n" + this.errors.join("\n"));
@@ -105,10 +113,10 @@ export default {
                 console.log(response);
                 alert("Usuari creat correctament");
             })
-            .catch((error) => {
-                error.response.data.errors.forEach((error) => {
-                    alert(error);
-                }); 
+            .catch(() => {
+
+                alert(this.errors);
+                return
             })
         },
         validarDades() {
@@ -125,14 +133,16 @@ export default {
                 this.errors.push("El correu és obligatori.");
                 this.usuariErrors.correu = true;
             }
-
+            if (!this.usuari.telefon) {
+                this.errors.push("El teléfon és obligatòri.");
+                this.usuariErrors.telefon = true;
+            }
             if (!this.usuari.contrasenya) {
                 this.errors.push("La contrasenya és obligatòria.");
                 this.usuariErrors.contrasenya = true;
             }
-
             switch (this.usuari.tipusUsuari) {
-                case 2: // Empresa
+                case "2": // Empresa
                     if (!this.usuari.tipusEmpresa) {
                         this.errors.push("El tipus d'empresa és obligatori.");
                         this.usuariErrors.tipusEmpresa = true;
@@ -150,7 +160,7 @@ export default {
                         this.usuariErrors.codiPostal = true;
                     }
                     break;
-                case 3: // Particular
+                case "3": // Particular
                     if (!this.usuari.dni) {
                         this.errors.push("El DNI és obligatori.");
                         this.usuariErrors.dni = true;
@@ -187,6 +197,3 @@ export default {
     
 }
 </script>
-<style>
-    
-</style>
