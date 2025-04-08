@@ -39,7 +39,7 @@ Route::get('/evento', function () {
     return view('evento'); // Para la vista evento.blade.php
 })->name('evento');
 
-Route::get('/crearevento', function () {
-    return view('crearevento'); // Para la vista crearEvento.blade.php
-})->name('crearevento');
 
+Route::get('/crearevento', function () {
+    return view('events.crearEvent'); // Para la vista crearEvento.blade.php
+})->name('crearevento');

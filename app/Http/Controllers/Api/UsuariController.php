@@ -73,6 +73,7 @@ class UsuariController extends Controller
 
         } catch (Exception $e) {
             DB::rollBack();
+            
         }
 
     }

@@ -3,6 +3,7 @@
 use App\Http\Controllers\Api\AssistentController;
 use App\Http\Controllers\Api\EmpresaController;
 use App\Http\Controllers\Api\EntradaController;
+use App\Http\Controllers\Api\EsdevenimentsController;
 use App\Http\Controllers\Api\TipusEmpresaController;
 use App\Http\Controllers\Api\UsuariController;
 use Illuminate\Http\Request;
@@ -28,3 +29,4 @@ Route::apiResource('empresa', EmpresaController::class);
 Route::apiResource('assistent', AssistentController::class);
 Route::apiResource('entrada', EntradaController::class);
 Route::apiResource('tipusEmpresa', TipusEmpresaController::class);
+Route::apiResource('esdeveniment', EsdevenimentsController::class);

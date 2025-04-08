@@ -1,6 +1,6 @@
 <template>
     <div class="container rounded bg-primary mt-3">
-        <form>
+        <form @submit.prevent="guardarUsuari()">
             <div class="mb-3">
                 <label for="" class="form-label">Tipus usuari</label>
                 <select name="" id="" class="form-control" v-model="usuari.tipusUsuari">
@@ -11,26 +11,26 @@
             </div>
             <div class="mb-3">
                 <label for="" class="form-label">Nom</label>
-                <input type="text" class="form-control" :class="{'is-invalid': usuariErrors.nom}" id="nom" name="nom" v-model="usuari.nom" :value="usuari.nom" required>
+                <input type="text" class="form-control" :class="{'is-invalid': usuariErrors.nom}" id="nom" name="nom" v-model="usuari.nom"  required>
             </div>
 
             <div v-if="usuari.tipusUsuari == 3">
                 <div class="mb-3">
                     <label for="" class="form-label">Cognom</label>
-                    <input type="text" class="form-control" :class="{'is-invalid': usuariErrors.cognom}" id="cognom" name="cognom" v-model="usuari.cognom" :value="usuari.cognom" required>
+                    <input type="text" class="form-control" :class="{'is-invalid': usuariErrors.cognom}" id="cognom" name="cognom" v-model="usuari.cognom"  required>
                 </div>
             </div>
             <div class="mb-3">
                 <label for="" class="form-label">Correu electrónic</label>
-                <input type="email" class="form-control" :class="{'is-invalid': usuariErrors.correu}" id="correu" name="correu" v-model="usuari.correu" :value="usuari.correu" required>
+                <input type="email" class="form-control" :class="{'is-invalid': usuariErrors.correu}" id="correu" name="correu" v-model="usuari.correu" required>
             </div>
             <div class="mb-3">
                 <label for="telefon" class="form-label">Teléfon</label>
-                <input type="text" class="form-control" :class="{'is-invalid': usuariErrors.telefon}" id="telefon" name="telefon" v-model="usuari.telefon" :value="usuari.telefon" required>
+                <input type="text" class="form-control" :class="{'is-invalid': usuariErrors.telefon}" id="telefon" name="telefon" v-model="usuari.telefon" required>
             </div>
             <div class="mb-3">
                 <label for="" class="form-label">Contrasenya</label>
-                <input type="password" class="form-control" :class="{'is-invalid': usuariErrors.contrasenya}" id="contrasenya" name="contrasenya" v-model="usuari.contrasenya" :value="usuari.contrasenya" required>
+                <input type="password" class="form-control" :class="{'is-invalid': usuariErrors.contrasenya}" id="contrasenya" name="contrasenya" v-model="usuari.contrasenya" required>
             </div>
             <div v-if="usuari.tipusUsuari == 2">
 
@@ -44,26 +44,26 @@
                     </select>
                 <div class="mb-3">
                     <label for="" class="form-label">NIF</label>
-                    <input type="text" class="form-control" :class="{'is-invalid': usuariErrors.nif}" id="nif" name="nif" v-model="usuari.nif" :value="usuari.nif" required>
+                    <input type="text" class="form-control" :class="{'is-invalid': usuariErrors.nif}" id="nif" name="nif" v-model="usuari.nif"  required>
                 </div>
                 <div class="mb-3">
                     <label for="" class="form-label">Direcció</label>
-                    <input type="text" class="form-control" :class="{'is-invalid': usuariErrors.direccio}" id="direccio" name="direccio" v-model="usuari.direccio" :value="usuari.direccio" required>
+                    <input type="text" class="form-control" :class="{'is-invalid': usuariErrors.direccio}" id="direccio" name="direccio" v-model="usuari.direccio"  required>
                 </div>
                 <div class="mb-3">
                     <label for="" class="form-label">Codi postal</label>
-                    <input type="text" class="form-control" :class="{'is-invalid': usuariErrors.codiPostal}" id="codiPostal" name="codiPostal" v-model="usuari.codiPostal" :value="usuari.codiPostal" required>
+                    <input type="text" class="form-control" :class="{'is-invalid': usuariErrors.codiPostal}" id="codiPostal" name="codiPostal" v-model="usuari.codiPostal"  required>
                 </div>
                 </div>
             </div>
             <div v-else-if="usuari.tipusUsuari == 3">
                 <div class="mb-3">
                     <label for="" class="form-label">DNI</label>
-                    <input type="text" class="form-control" :class="{'is-invalid': usuariErrors.dni}" id="dni" name="dni" v-model="usuari.dni" :value="usuari.dni" required>
+                    <input type="text" class="form-control" :class="{'is-invalid': usuariErrors.dni}" id="dni" name="dni" v-model="usuari.dni" required>
                 </div>
             </div>
             <div class="mt-3">
-                <button @click="guardarUsuari" class="btn btn-secondary">Registrar</button>
+                <button type="submit" class="btn btn-secondary">Registrar</button>
             </div> 
         </form>
     </div>
@@ -98,7 +98,7 @@ export default {
 
         guardarUsuari(){
 
-            this.validarDades();
+        this.validarDades();
 
             if (this.errors.length > 0) {
                 alert("Hi ha errors en el formulari:\n" + this.errors.join("\n"));
