@@ -1,9 +1,9 @@
 <template>
     <div class="container rounded bg-primary mt-3">
-        <form @submit.prevent="guardarUsuari()">
+        <form>
             <div class="mb-3">
                 <label for="" class="form-label">Tipus usuari</label>
-                <select name="" id="" class="form-control" v-model="usuari.tipusUsuari">
+                <select name="tipusUsuari" id="" class="form-control" v-model="usuari.tipusUsuari">
                     <option></option>
                     <option value="2">Empresa</option>
                     <option value="3">Assistent</option>
@@ -11,60 +11,71 @@
             </div>
             <div class="mb-3">
                 <label for="" class="form-label">Nom</label>
-                <input type="text" class="form-control" :class="{'is-invalid': usuariErrors.nom}" id="nom" name="nom" v-model="usuari.nom"  required>
+                <input type="text" class="form-control" :class="{ 'is-invalid': usuariErrors.nom }" id="nom" name="nom"
+                    v-model="usuari.nom" required>
             </div>
 
             <div v-if="usuari.tipusUsuari == 3">
                 <div class="mb-3">
                     <label for="" class="form-label">Cognom</label>
-                    <input type="text" class="form-control" :class="{'is-invalid': usuariErrors.cognom}" id="cognom" name="cognom" v-model="usuari.cognom"  required>
+                    <input type="text" class="form-control" :class="{ 'is-invalid': usuariErrors.cognom }" id="cognom"
+                        name="cognom" v-model="usuari.cognom" required>
                 </div>
             </div>
             <div class="mb-3">
                 <label for="" class="form-label">Correu electrónic</label>
-                <input type="email" class="form-control" :class="{'is-invalid': usuariErrors.correu}" id="correu" name="correu" v-model="usuari.correu" required>
+                <input type="email" class="form-control" :class="{ 'is-invalid': usuariErrors.correu }" id="correu"
+                    name="correu" v-model="usuari.correu" required>
             </div>
             <div class="mb-3">
                 <label for="telefon" class="form-label">Teléfon</label>
-                <input type="text" class="form-control" :class="{'is-invalid': usuariErrors.telefon}" id="telefon" name="telefon" v-model="usuari.telefon" required>
+                <input type="text" class="form-control" :class="{ 'is-invalid': usuariErrors.telefon }" id="telefon"
+                    name="telefon" v-model="usuari.telefon" required>
             </div>
             <div class="mb-3">
                 <label for="" class="form-label">Contrasenya</label>
-                <input type="password" class="form-control" :class="{'is-invalid': usuariErrors.contrasenya}" id="contrasenya" name="contrasenya" v-model="usuari.contrasenya" required>
+                <input type="password" class="form-control" :class="{ 'is-invalid': usuariErrors.contrasenya }"
+                    id="contrasenya" name="contrasenya" v-model="usuari.contrasenya" required>
             </div>
             <div v-if="usuari.tipusUsuari == 2">
 
                 <div class="mb-3">
                     <label for="tipusEmpresa">Tipus Empresa</label>
-                    <select name="tipusEmpresa" id="tipusEmpresa" class="form-control" v-model="usuari.tipusEmpresa" required>
-                        <option v-for="tipus in tipusEmpreses" :key="tipus.id_tipus_empreses" :value="tipus.tipus_empreses">
+                    <select name="tipusEmpresa" id="tipusEmpresa" class="form-control" v-model="usuari.tipusEmpresa"
+                        required>
+                        <option v-for="tipus in tipusEmpreses" :key="tipus.id_tipus_empreses"
+                            :value="tipus.tipus_empreses">
                             {{ tipus.tipus_empreses }}
                         </option>
 
                     </select>
-                <div class="mb-3">
-                    <label for="" class="form-label">NIF</label>
-                    <input type="text" class="form-control" :class="{'is-invalid': usuariErrors.nif}" id="nif" name="nif" v-model="usuari.nif"  required>
-                </div>
-                <div class="mb-3">
-                    <label for="" class="form-label">Direcció</label>
-                    <input type="text" class="form-control" :class="{'is-invalid': usuariErrors.direccio}" id="direccio" name="direccio" v-model="usuari.direccio"  required>
-                </div>
-                <div class="mb-3">
-                    <label for="" class="form-label">Codi postal</label>
-                    <input type="text" class="form-control" :class="{'is-invalid': usuariErrors.codiPostal}" id="codiPostal" name="codiPostal" v-model="usuari.codiPostal"  required>
-                </div>
+                    <div class="mb-3">
+                        <label for="" class="form-label">NIF</label>
+                        <input type="text" class="form-control" :class="{ 'is-invalid': usuariErrors.nif }" id="nif"
+                            name="nif" v-model="usuari.nif" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="" class="form-label">Direcció</label>
+                        <input type="text" class="form-control" :class="{ 'is-invalid': usuariErrors.direccio }"
+                            id="direccio" name="direccio" v-model="usuari.direccio" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="" class="form-label">Codi postal</label>
+                        <input type="text" class="form-control" :class="{ 'is-invalid': usuariErrors.codiPostal }"
+                            id="codiPostal" name="codiPostal" v-model="usuari.codiPostal" required>
+                    </div>
                 </div>
             </div>
             <div v-else-if="usuari.tipusUsuari == 3">
                 <div class="mb-3">
                     <label for="" class="form-label">DNI</label>
-                    <input type="text" class="form-control" :class="{'is-invalid': usuariErrors.dni}" id="dni" name="dni" v-model="usuari.dni" required>
+                    <input type="text" class="form-control" :class="{ 'is-invalid': usuariErrors.dni }" id="dni"
+                        name="dni" v-model="usuari.dni" required>
                 </div>
             </div>
             <div class="mt-3">
-                <button type="submit" class="btn btn-secondary">Registrar</button>
-            </div> 
+                <button type="submit" class="btn btn-secondary" @click="guardarUsuari()">Registrar</button>
+            </div>
         </form>
     </div>
 </template>
@@ -72,13 +83,13 @@
 
 export default {
 
-    data(){
+    data() {
 
-        return{
+        return {
 
             tipusEmpreses: [],
-            usuari:{},
-            usuariErrors:{
+            usuari: {},
+            usuariErrors: {
                 nom: false,
                 cognom: false,
                 correu: false,
@@ -94,11 +105,11 @@ export default {
         }
 
     },
-    methods:{
+    methods: {
 
-        guardarUsuari(){
+        guardarUsuari() {
 
-        this.validarDades();
+            this.validarDades();
 
             if (this.errors.length > 0) {
                 alert("Hi ha errors en el formulari:\n" + this.errors.join("\n"));
@@ -107,17 +118,17 @@ export default {
 
             const me = this;
             axios
-            .post("usuari", me.usuari)
-            .then((response) => {
-                me.usuari = response.data;
-                console.log(response);
-                alert("Usuari creat correctament");
-            })
-            .catch(() => {
+                .post("usuari", me.usuari)
+                .then((response) => {
+                    me.usuari = response.data;
+                    console.log(response);
+                    alert("Usuari creat correctament");
+                })
+                .catch(() => {
 
-                alert(this.errors);
-                return
-            })
+                    alert(this.errors);
+                    return
+                })
         },
         validarDades() {
             // Reinicialitzar errors abans de validar
@@ -173,27 +184,27 @@ export default {
             }
         },
 
-        agafarTipusEmpresa(){
+        agafarTipusEmpresa() {
 
             const me = this;
 
             axios
-            .get("tipusEmpresa")
-            .then((response) => {
-                me.tipusEmpreses = response.data;
-                console.log(response.data);
-            })
-            .catch((error) => {
-                error.response.data.errors.forEach((error) => {
-                    alert(error);
-                }); 
-            })
+                .get("tipusEmpresa")
+                .then((response) => {
+                    me.tipusEmpreses = response.data;
+                    console.log(response.data);
+                })
+                .catch((error) => {
+                    error.response.data.errors.forEach((error) => {
+                        alert(error);
+                    });
+                })
         }
 
     },
-    mounted(){
+    mounted() {
         this.agafarTipusEmpresa();
     }
-    
+
 }
 </script>
