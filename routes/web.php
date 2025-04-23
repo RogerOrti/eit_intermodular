@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\EsdevenimentController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UsuarisController;
 
@@ -14,9 +15,7 @@ use App\Http\Controllers\UsuarisController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-Route::get('/', function () {
-    return view('index'); // Para la vista index.blade.php
-})->name('home');
+Route::get('/', [EsdevenimentController::class, 'home'])->name('home');
 
 Route::get('/eventos', function () {
     return view('eventos'); // Para la vista eventos.blade.php

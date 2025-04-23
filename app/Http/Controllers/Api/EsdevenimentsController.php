@@ -17,6 +17,7 @@ class EsdevenimentsController extends Controller
         $esdeveniments = Esdeveniment::all();
 
         return EsdevenimentResource::collection($esdeveniments);
+
     }
 
     /**
@@ -24,7 +25,25 @@ class EsdevenimentsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'nom' => 'required|string|max:255',
+            'descripcio' => 'required|string',
+            'direccio' => 'required|string',
+            'image' => 'required|image|max:2048', // Valida que sea una imagen
+        ]);
+
+        // Guarda la imagen en el sistema de archivos
+        $path = $request->file('image')->store('public/images');
+
+        // Guarda los datos del evento en la base de datos
+        $esdeveniment = Esdeveniment::create([
+            'nom' => $validatedData['nom'],
+            'descripcio' => $validatedData['descripcio'],
+            'direccio' => $validatedData['direccio'],
+            'image' => Storage::url($path), // Guarda la URL pública
+        ]);
+
+        return redirect()->back()->with('success', 'Evento creado con éxito.');
     }
 
     /**
