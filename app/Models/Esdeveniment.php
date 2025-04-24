@@ -11,7 +11,7 @@ class Esdeveniment extends Model
 
     protected $table = "esdeveniments";
     protected $primary_key = "id_esdeveniment";
-    protected $fillable = ['nom', 'descripcio', 'direccio','imatge'];
+    protected $fillable = ['nom', 'descripcio', 'direccio', 'data_inici', 'data_fi','imatge'];
     public $timestamp = false;
 
 

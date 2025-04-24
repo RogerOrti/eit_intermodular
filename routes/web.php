@@ -15,7 +15,9 @@ use App\Http\Controllers\UsuarisController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-Route::get('/', [EsdevenimentController::class, 'home'])->name('home');
+Route::get('/', function () {
+    return view('index'); // Para la vista eventos.blade.php
+})->name('home');
 
 Route::get('/eventos', function () {
     return view('eventos'); // Para la vista eventos.blade.php

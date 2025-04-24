@@ -33,7 +33,7 @@
         <div class="div-prox-eventos centrar-elementos">
             <h3>Pròxims esdeveniments</h3>
             <div class="container-eventos centrar-elementos" id="app">
-                <card-esdeveniment :esdeveniments="{{ $esdeveniments->toJson() }}"></card-esdeveniment>
+                <card-esdeveniment :limit="6"><card-esdeveniment>
             </div>
             <a class="btn-ver-mas" href="{{ route('eventos') }}">Veure més</a>
         </div>
@@ -59,4 +59,5 @@
             </div>
         </div>
     </main>
+    <script src="{{ mix('js/app.js') }}"></script>
 @endsection

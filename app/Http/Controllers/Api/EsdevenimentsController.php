@@ -12,12 +12,14 @@ class EsdevenimentsController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $esdeveniments = Esdeveniment::all();
+        $limit = $request->query('limit', 6); // Limita el número de eventos a 6 por defecto.
+        $esdeveniments = Esdeveniment::select('id_esdeveniment', 'nom', 'descripcio', 'direccio', 'data_inici', 'data_fi' ,'imatge')
+            ->take($limit)
+            ->get();
 
-        return EsdevenimentResource::collection($esdeveniments);
-
+        return response()->json($esdeveniments);
     }
 
     /**
@@ -29,11 +31,13 @@ class EsdevenimentsController extends Controller
             'nom' => 'required|string|max:255',
             'descripcio' => 'required|string',
             'direccio' => 'required|string',
+            'data_inici' => 'required|date',
+            'data_fi' => 'required|date',
             'image' => 'required|image|max:2048', // Valida que sea una imagen
         ]);
 
         // Guarda la imagen en el sistema de archivos
-        $path = $request->file('image')->store('public/images');
+        $path = $request->file('image')->store('public/media');
 
         // Guarda los datos del evento en la base de datos
         $esdeveniment = Esdeveniment::create([
