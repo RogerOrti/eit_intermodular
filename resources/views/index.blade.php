@@ -32,73 +32,8 @@
         </div>
         <div class="div-prox-eventos centrar-elementos">
             <h3>Pròxims esdeveniments</h3>
-            <div class="container-eventos centrar-elementos">
-                <a href="{{ route('evento') }}">
-                    <div class="card-evento">
-                        <img class="img-evento" src="{{ asset('media/eventoPrincipal.png')}}" alt="">
-                        <h5 class="elemento-card">MWC Barcelona</h5>
-                        <p class="elemento-card">03/03/2025 - 06/03/2025</p>
-                        <div class="elemento-card">
-                            <p>Fira Barcelona</p>
-                            <a class="btn-general" href="{{ route('tickets') }}">TICKETS</a>
-                        </div>
-                    </div>
-                </a>
-                <a href="{{ route('evento') }}">
-                    <div class="card-evento">
-                        <img class="img-evento" src="{{ asset('media/eventoPrincipal.png')}}" alt="">
-                        <h5 class="elemento-card">MWC Barcelona</h5>
-                        <p class="elemento-card">03/03/2025 - 06/03/2025</p>
-                        <div class="elemento-card">
-                            <p>Fira Barcelona</p>
-                            <a class="btn-general" href="{{ route('tickets') }}">TICKETS</a>
-                        </div>
-                    </div>
-                </a>
-                <a href="{{ route('evento') }}">
-                    <div class="card-evento">
-                        <img class="img-evento" src="{{ asset('media/eventoPrincipal.png')}}" alt="">
-                        <h5 class="elemento-card">MWC Barcelona</h5>
-                        <p class="elemento-card">03/03/2025 - 06/03/2025</p>
-                        <div class="elemento-card">
-                            <p>Fira Barcelona</p>
-                            <a class="btn-general" href="{{ route('tickets') }}">TICKETS</a>
-                        </div>
-                    </div>
-                </a>
-                <a href="{{ route('evento') }}">
-                    <div class="card-evento">
-                        <img class="img-evento" src="{{ asset('media/eventoPrincipal.png')}}" alt="">
-                        <h5 class="elemento-card">MWC Barcelona</h5>
-                        <p class="elemento-card">03/03/2025 - 06/03/2025</p>
-                        <div class="elemento-card">
-                            <p>Fira Barcelona</p>
-                            <a class="btn-general" href="{{ route('tickets') }}">TICKETS</a>
-                        </div>
-                    </div>
-                </a>
-                <a href="{{ route('evento') }}">
-                    <div class="card-evento">
-                        <img class="img-evento" src="{{ asset('media/eventoPrincipal.png')}}" alt="">
-                        <h5 class="elemento-card">MWC Barcelona</h5>
-                        <p class="elemento-card">03/03/2025 - 06/03/2025</p>
-                        <div class="elemento-card">
-                            <p>Fira Barcelona</p>
-                            <a class="btn-general" href="{{ route('tickets') }}">TICKETS</a>
-                        </div>
-                    </div>
-                </a>
-                <a href="{{ route('evento') }}">
-                    <div class="card-evento">
-                        <img class="img-evento" src="{{ asset('media/eventoPrincipal.png')}}" alt="">
-                        <h5 class="elemento-card">MWC Barcelona</h5>
-                        <p class="elemento-card">03/03/2025 - 06/03/2025</p>
-                        <div class="elemento-card">
-                            <p>Fira Barcelona</p>
-                            <a class="btn-general" href="{{ route('tickets') }}">TICKETS</a>
-                        </div>
-                    </div>
-                </a>
+            <div class="container-eventos centrar-elementos" id="app">
+                <card-esdeveniment :limit="6"><card-esdeveniment>
             </div>
             <a class="btn-ver-mas" href="{{ route('eventos') }}">Veure més</a>
         </div>
@@ -124,4 +59,5 @@
             </div>
         </div>
     </main>
+    <script src="{{ mix('js/app.js') }}"></script>
 @endsection

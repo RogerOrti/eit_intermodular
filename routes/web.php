@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\EsdevenimentController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UsuarisController;
 
@@ -15,7 +16,7 @@ use App\Http\Controllers\UsuarisController;
 |
 */
 Route::get('/', function () {
-    return view('index'); // Para la vista index.blade.php
+    return view('index'); // Para la vista eventos.blade.php
 })->name('home');
 
 Route::get('/eventos', function () {
