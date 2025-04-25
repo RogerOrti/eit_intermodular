@@ -30,7 +30,7 @@
                 <hr>
             </div>
         </div>
-        <div class="div-prox-eventos centrar-elementos">
+        <div class="div-prox-eventos centrar-elementos" id="app">
             <h3>Pròxims esdeveniments</h3>
             <div class="container-eventos centrar-elementos" id="app">
                 <card-esdeveniment :limit="6"><card-esdeveniment>
