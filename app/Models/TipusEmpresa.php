@@ -10,8 +10,8 @@ class TipusEmpresa extends Model
     use HasFactory;
 
     protected $table = "tipus_empreses";
-    protected $primary_key = "id_tipus_empreses";
-    public $timestamp = false;
+    protected $primaryKey = "id_tipus_empreses";
+    public $timestamps = false;
 
     public function Empresa()
     {

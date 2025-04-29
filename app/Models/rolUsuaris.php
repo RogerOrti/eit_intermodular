@@ -11,7 +11,7 @@ class rolUsuaris extends Model
     use HasFactory;
 
     protected $table = "rol_usuaris";
-    protected $primary_key = "id_rol_usuaris";
+    protected $primaryKey = "id_rol_usuaris";
     public $timestamps = false;
 
     public function Usuaris()

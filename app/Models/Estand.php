@@ -10,8 +10,8 @@ class Estand extends Model
     use HasFactory;
 
     protected $table = "estands";
-    protected $primary_key = "id_estands";
-    public $timestamp = false;
+    protected $primaryKey = "id_estands";
+    public $timestamps = false;
 
     public function exposicio()
     {
