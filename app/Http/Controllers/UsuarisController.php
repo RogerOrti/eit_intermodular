@@ -33,8 +33,8 @@ class UsuarisController extends Controller
             $response = redirect('/');
         }
         else{
-            $request->session()->flash('error','Usuari o contrasenya incorrectes');
-            $response = redirect('/');
+            $request->session()->flash('error','Usuari o contrasenya incorrectes.');
+            $response = redirect('/login');
         }
 
         return $response;

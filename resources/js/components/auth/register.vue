@@ -1,6 +1,6 @@
 <template>
     <div class="container rounded bg-primary mt-3">
-        <form>
+        <form method="POST">
             <div class="mb-3">
                 <label for="" class="form-label">Tipus usuari</label>
                 <select name="tipusUsuari" id="" class="form-control" v-model="usuari.tipusUsuari">
@@ -113,8 +113,6 @@ export default {
 
             console.log("Dades a enviar:" + this.usuari);
             
-
-
             if (this.errors.length > 0) {
                 alert("Hi ha errors en el formulari:\n" + this.errors.join("\n"));
                 return;

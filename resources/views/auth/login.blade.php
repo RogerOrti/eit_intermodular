@@ -4,8 +4,17 @@
 
 @section('home')
     
+@if (session('error'))
+<div class="container mt-3">
+    <div class="alert alert-danger">
+        {{ session('error') }}
+    </div>
+</div>
+@endif
+
 <div class="container rounded bg-primary ">
-    <form action="{{ route('login')}}">
+    <form action="{{ route('login')}}" method="POST">
+        @csrf
         <div class="mt-3">
             <div class="mb-3">
                 <label for="nom" class="form-label">Nom</label>
