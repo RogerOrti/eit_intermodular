@@ -11,8 +11,8 @@ class Assistent extends Model
     use HasFactory;
 
     protected $table = "assistents";
-    protected $primary_key = "id_usuaris";
-    public $timestamp = false;
+    protected $primaryKey = "id_usuaris";
+    public $timestamps = false;
 
     public function usuari()
     {

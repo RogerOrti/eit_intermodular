@@ -6,6 +6,7 @@ use App\Models\Assistent;
 use App\Models\Empresa;
 use App\Models\Usuaris;
 use Exception;
+use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
@@ -51,9 +52,12 @@ class UsuariController extends Controller
 
                 $empresa->nif = $request->input("nif");
                 $empresa->direccio = $request->input("direccio");
-                $empresa->codiPostal = $request->input("codiPostal");
-                $empresa->id_tipus_empresa = $request->input("tipusEmpresa");
+                $empresa->codi_postal = $request->input("codiPostal");
+                $empresa->id_tipus_empreses = $request->input("tipusEmpresa");
                 $empresa->id_usuaris = $usuari->id_usuaris;
+
+                $prova_usuari = $usuari->id_usuaris;
+
 
                 $empresa->save();
 
@@ -71,7 +75,7 @@ class UsuariController extends Controller
 
             DB::commit();
 
-        } catch (Exception $e) {
+        } catch (QueryException $e) {
             DB::rollBack();
             
         }

@@ -11,7 +11,7 @@ class Empresa extends Model
     use HasFactory;
 
     protected $table = "empreses";
-    protected $primary_key = "id_usuaris";
+    protected $primaryKey = "id_usuaris";
     public $timestamps = false;
 
     public function usuari()

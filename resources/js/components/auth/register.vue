@@ -10,20 +10,20 @@
                 </select>
             </div>
             <div class="mb-3">
-                <label for="" class="form-label">Nom</label>
+                <label for="nom" class="form-label">Nom</label>
                 <input type="text" class="form-control" :class="{ 'is-invalid': usuariErrors.nom }" id="nom" name="nom"
                     v-model="usuari.nom" required>
             </div>
 
             <div v-if="usuari.tipusUsuari == 3">
                 <div class="mb-3">
-                    <label for="" class="form-label">Cognom</label>
+                    <label for="cognom" class="form-label">Cognom</label>
                     <input type="text" class="form-control" :class="{ 'is-invalid': usuariErrors.cognom }" id="cognom"
                         name="cognom" v-model="usuari.cognom" required>
                 </div>
             </div>
             <div class="mb-3">
-                <label for="" class="form-label">Correu electrónic</label>
+                <label for="correu" class="form-label">Correu electrónic</label>
                 <input type="email" class="form-control" :class="{ 'is-invalid': usuariErrors.correu }" id="correu"
                     name="correu" v-model="usuari.correu" required>
             </div>
@@ -44,23 +44,23 @@
                     <select name="tipusEmpresa" id="tipusEmpresa" class="form-control" v-model="usuari.tipusEmpresa"
                         required>
                         <option v-for="tipus in tipusEmpreses" :key="tipus.id_tipus_empreses"
-                            :value="tipus.tipus_empreses">
+                            :value="tipus.id_tipus_empreses">
                             {{ tipus.tipus_empreses }}
                         </option>
 
                     </select>
                     <div class="mb-3">
-                        <label for="" class="form-label">NIF</label>
+                        <label for="nif" class="form-label">NIF</label>
                         <input type="text" class="form-control" :class="{ 'is-invalid': usuariErrors.nif }" id="nif"
                             name="nif" v-model="usuari.nif" required>
                     </div>
                     <div class="mb-3">
-                        <label for="" class="form-label">Direcció</label>
+                        <label for="direccio" class="form-label">Direcció</label>
                         <input type="text" class="form-control" :class="{ 'is-invalid': usuariErrors.direccio }"
                             id="direccio" name="direccio" v-model="usuari.direccio" required>
                     </div>
                     <div class="mb-3">
-                        <label for="" class="form-label">Codi postal</label>
+                        <label for="codiPostal" class="form-label">Codi postal</label>
                         <input type="text" class="form-control" :class="{ 'is-invalid': usuariErrors.codiPostal }"
                             id="codiPostal" name="codiPostal" v-model="usuari.codiPostal" required>
                     </div>
@@ -68,7 +68,7 @@
             </div>
             <div v-else-if="usuari.tipusUsuari == 3">
                 <div class="mb-3">
-                    <label for="" class="form-label">DNI</label>
+                    <label for="dni" class="form-label">DNI</label>
                     <input type="text" class="form-control" :class="{ 'is-invalid': usuariErrors.dni }" id="dni"
                         name="dni" v-model="usuari.dni" required>
                 </div>
@@ -111,6 +111,10 @@ export default {
 
             this.validarDades();
 
+            console.log("Dades a enviar:" + this.usuari);
+            
+
+
             if (this.errors.length > 0) {
                 alert("Hi ha errors en el formulari:\n" + this.errors.join("\n"));
                 return;
@@ -125,9 +129,7 @@ export default {
                     alert("Usuari creat correctament");
                 })
                 .catch(() => {
-
-                    alert(this.errors);
-                    return
+                    alert("Errors al registar l'usuari");
                 })
         },
         validarDades() {
@@ -191,8 +193,7 @@ export default {
             axios
                 .get("tipusEmpresa")
                 .then((response) => {
-                    me.tipusEmpreses = response.data;
-                    console.log(response.data);
+                    me.tipusEmpreses = response.data.data;
                 })
                 .catch((error) => {
                     error.response.data.errors.forEach((error) => {

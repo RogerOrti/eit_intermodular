@@ -13,22 +13,22 @@ class Usuaris extends Model
     use HasFactory;
 
     protected $table = "usuaris";
-    protected $primary_key = "id_usuaris";
-    public $timestamp = false;
+    protected $primaryKey = 'id_usuaris';
+    public $timestamps = false;
 
     public function rolUsuari()
     {
-        return $this->belongsTo(rolUsuaris::class, 'id_usuaris','id_rol_usuaris');
+        return $this->belongsTo(rolUsuaris::class, 'id_usuaris');
     }
 
     public function empresa()
     {
-        return $this->hasOne(Empresa::class, 'id_usuaris', 'id_usuaris');
+        return $this->hasOne(Empresa::class, 'id_usuaris');
     }
 
     public function assistent()
     {
-        return $this->hasOne(Assistent::class, 'id_usuaris', 'id_usuaris');
+        return $this->hasOne(Assistent::class, 'id_usuaris');
     }
 
 } 

@@ -10,9 +10,9 @@ class Esdeveniment extends Model
     use HasFactory;
 
     protected $table = "esdeveniments";
-    protected $primary_key = "id_esdeveniment";
+    protected $primaryKey = "id_esdeveniment";
     protected $fillable = ['nom', 'descripcio', 'direccio', 'data_inici', 'data_fi','imatge'];
-    public $timestamp = false;
+    public $timestamps = false;
 
 
     public function Exposicio()

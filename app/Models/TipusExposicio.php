@@ -10,8 +10,8 @@ class TipusExposicio extends Model
     use HasFactory;
 
     protected $table = "tipus_exposicions";
-    protected $primary_key = "id_tipus_exposicions";
-    public $timestamp = false;
+    protected $primaryKey = "id_tipus_exposicions";
+    public $timestamps = false;
 
     public function Exposicions()
     {

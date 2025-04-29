@@ -10,8 +10,8 @@ class Horari extends Model
     use HasFactory;
 
     protected $table = "horaris";
-    protected $primary_key = "id_horaris";
-    public $timestamp = false;
+    protected $primaryKey = "id_horaris";
+    public $timestamps = false;
 
     public function Estand()
     {
