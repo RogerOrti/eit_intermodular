@@ -11,8 +11,20 @@
             </div>
             <div class="div-info centrar-elementos">
                 <!-- Carrusel de imágenes -->
-                <div class="carrusel">
-                    <img class="img-carrusel" src="{{ asset('media/eventoPrincipal.png')}}" alt="">
+                <div class="container-carrusel">
+                    <div class="carrusel" id="slider">
+                        <section class="slider-section">
+                            <img class="img-carrusel" src="{{ asset('media/eventoPrincipal.png')}}" alt="">
+                        </section>
+                        <section class="slider-section">
+                            <img class="img-carrusel" src="{{ asset('media/logo.png')}}" alt="">
+                        </section>
+                        <section class="slider-section">
+                            <img class="img-carrusel" src="{{ asset('media/evento.png')}}" alt="">
+                        </section>
+                    </div>
+                    <div class="btn-left"><</div>
+                    <div class="btn-right">></div>
                 </div>
                 <div class="subtitulo">
                     <h2>
@@ -30,7 +42,7 @@
                 <hr>
             </div>
         </div>
-        <div class="div-prox-eventos centrar-elementos">
+        <div class="div-prox-eventos centrar-elementos" id="app">
             <h3>Pròxims esdeveniments</h3>
             <div class="container-eventos centrar-elementos" id="app">
                 <card-esdeveniment :limit="6"><card-esdeveniment>
@@ -59,5 +71,4 @@
             </div>
         </div>
     </main>
-    <script src="{{ mix('js/app.js') }}"></script>
 @endsection
