@@ -2,15 +2,16 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Models\Assistent;
+use Exception;
 use App\Models\Empresa;
 use App\Models\Usuaris;
-use Exception;
-use Illuminate\Database\QueryException;
+use App\Models\Assistent;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Hash;
 use App\Http\Resources\UsuariResource;
+use Illuminate\Database\QueryException;
 
 class UsuariController extends Controller
 {
@@ -38,7 +39,7 @@ class UsuariController extends Controller
 
             $usuari->nom = $request->input("nom");
             $usuari->correu_electronic = $request->input("correu");
-            $usuari->contrasenya = $request->input("contrasenya");
+            $usuari->contrasenya = Hash::make($request->input("contrasenya"));
             $usuari->telefon = $request->input("telefon");
             $usuari->tipus_usuari = $request->input("tipusUsuari");
             $usuari->id_rol_usuaris = $request->input("tipusUsuari");
