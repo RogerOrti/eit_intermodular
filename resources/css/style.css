@@ -295,3 +295,15 @@ hr{
     margin: 10px;
     width: 195px;
 }
+
+/* ABOUT US */
+.div-aboutus{
+    width: 40%;
+    text-align: center;
+}
+.div-aboutus h3, .div-aboutus p{
+    text-align: justify;
+}
+#img-logo-aboutUs{
+    width: 500px;
+}

@@ -28,6 +28,7 @@
 @yield('home')
 @yield('eventos')
 @yield('evento')
+@yield('aboutUs')
 <footer class="footer-general">
     <div class="div-logo-footer centrar-elementos">
         <img class="img-logo-footer" src="{{ asset('media/logo.png')}}" alt="Imagen logo">
