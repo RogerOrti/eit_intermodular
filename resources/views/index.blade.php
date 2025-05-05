@@ -3,7 +3,7 @@
 @section('titol', 'Home')
 
 @section('home')
-    <main class="main-general">
+    <main class="main-general" id="app">
         <div class="container-general centrar-elementos">
             <div class="titulo">
                 <h1>ORGANITZACIÓ D'ESDEVENIMENTS</h1>
@@ -12,19 +12,7 @@
             <div class="div-info centrar-elementos">
                 <!-- Carrusel de imágenes -->
                 <div class="container-carrusel">
-                    <div class="carrusel" id="slider">
-                        <section class="slider-section">
-                            <img class="img-carrusel" src="{{ asset('media/eventoPrincipal.png')}}" alt="">
-                        </section>
-                        <section class="slider-section">
-                            <img class="img-carrusel" src="{{ asset('media/logo.png')}}" alt="">
-                        </section>
-                        <section class="slider-section">
-                            <img class="img-carrusel" src="{{ asset('media/evento.png')}}" alt="">
-                        </section>
-                    </div>
-                    <div class="btn-left"><</div>
-                    <div class="btn-right">></div>
+                    <carrusel></carrusel>
                 </div>
                 <div class="subtitulo">
                     <h2>
