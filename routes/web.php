@@ -32,6 +32,8 @@ Route::get('/register', [UsuarisController::class,'showRegister'])->name('showRe
 Route::get('/login', [UsuarisController::class, 'showLogin'])->name('showLogin');
 Route::post('/login', [UsuarisController::class, 'login'])->name('login');
 
+Route::get('/logout', [UsuarisController::class,'logout'])->name('logout');
+
 Route::get('/tickets', function () {
     return view('tickets'); // Para la vista tickets.blade.php
 })->name('tickets');

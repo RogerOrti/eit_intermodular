@@ -1,27 +1,57 @@
 <template>
-    <div>
-        <form action="">
-            <div>
-                <label for="" class="form-label">Nom de l'esdeveniment</label>
-                <input type="text" class="form-control">
+    <div class="mt-3 mb-3">
+        <form>
+            <div class="mb-3">
+                <label for="nom" class="form-label">Nom de l'esdeveniment</label>
+                <input type="text" class="form-control" v-model="esdeveniment.nom" name="nom" id="nom">
+            </div>
+            <div class="mb-3">
+                <label for="descripcio" class="form-label">Descripció</label>
+                <textarea class="form-control" rows="3" name="descripcio" id="descripcio" v-model="esdeveniment.descripcio"></textarea>
+            </div>
+            <div class="mb-3">
+                <label for="direccio" class="form-label">Direcció</label>
+                <input type="text" class="form-control" v-model="esdeveniment.direccio" name="direccio" id="direccio">
             </div>
             <div>
-                <label for="" class="form-label">Descripció</label>
-                <input type="textarea" class="form-control">
-            </div>
-            <div>
-                <label for="" class="form-label">Direcció</label>
-                <input type="text" class="form-control">
-            </div>
-            <div>
-                <button class="btn btn-secondary">Crear</button>
+                <button class="btn btn-secondary" @click="crearEsdeveniment">Crear</button>
             </div>
         </form>
     </div>
 </template>
 <script>
-export default {
+import axios from 'axios';
 
+export default {
+    data(){
+        return {
+
+            esdeveniment:{}
+        }
+    },
+    methods: {
+
+        crearEsdeveniment(){
+
+            const me = this;
+
+            axios
+            .post('esdeveniment', me.esdeveniment)
+            .then((response) => {
+                console.log(response.data)
+                alert("Esdeveniment creat correctament");
+            })
+            .catch((err) => {
+                alert("S'ha produït un error");
+                return
+            });
+        }
+
+
+    },
+    mounted(){
+
+    }
     
 }
 </script>

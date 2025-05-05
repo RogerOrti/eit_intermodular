@@ -4,7 +4,7 @@
 
 @section('home')
     
-    <div id="app">
+    <div id="app" class="container bg-primary">
         <formevent></formevent>
     </div>
 
