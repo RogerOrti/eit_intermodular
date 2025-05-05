@@ -11,8 +11,20 @@
             </div>
             <div class="div-info centrar-elementos">
                 <!-- Carrusel de imágenes -->
-                <div class="carrusel">
-                    <img class="img-carrusel" src="{{ asset('media/eventoPrincipal.png')}}" alt="">
+                <div class="container-carrusel">
+                    <div class="carrusel" id="slider">
+                        <section class="slider-section">
+                            <img class="img-carrusel" src="{{ asset('media/eventoPrincipal.png')}}" alt="">
+                        </section>
+                        <section class="slider-section">
+                            <img class="img-carrusel" src="{{ asset('media/logo.png')}}" alt="">
+                        </section>
+                        <section class="slider-section">
+                            <img class="img-carrusel" src="{{ asset('media/evento.png')}}" alt="">
+                        </section>
+                    </div>
+                    <div class="btn-left"><</div>
+                    <div class="btn-right">></div>
                 </div>
                 <div class="subtitulo">
                     <h2>
