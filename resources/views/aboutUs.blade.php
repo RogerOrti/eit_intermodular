@@ -8,7 +8,7 @@
         <div class="titulo h1-eventos">
             <h1>¿QUI <span class="palabras-moradas">SOM</span>?</h1>
         </div>
-        <section class="centrar-elementos">
+        <section class="section-aboutus">
             <div class="div-info">
                 <img id="img-logo-aboutUs" src="{{ asset('media/logo.png')}}" alt="Imagen sobre nosotros">
             </div>
@@ -36,12 +36,24 @@
         <div class="titulo h1-eventos">
             <h2>EL NOSTRE <span class="palabras-moradas">EQUIP</span></h2>
         </div>
-        <section>
-            <div>
-
+        <section class="container-miembros">
+            <div class="card-miembro">
+                <div>
+                    <img class="img-miembro" src="{{ asset('media/desi.png')}}" alt="Desirée Romero">
+                </div>
+                <div class="info-miembro">
+                    <h4>DESIRÉE ROMERO</h4>
+                    <p>Desarrolladora de aplicaciones web</p>
+                </div>
             </div>
-            <div>
-
+            <div class="card-miembro">
+                <div>
+                    <img class="img-valores" src="{{ asset('media/roger.png')}}" alt="Roger Ortí">
+                </div>
+                <div class="info-miembro">
+                    <h4>ROGER ORTÍ</h4>
+                    <p>Desarrollador de aplicaciones web</p>
+                </div>
             </div>
         </section>
     </div>

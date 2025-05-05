@@ -297,6 +297,12 @@ hr{
 }
 
 /* ABOUT US */
+.section-aboutus{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin: 50px 0px 50px 0px;
+}
 .div-aboutus{
     width: 40%;
     text-align: center;
@@ -306,4 +312,46 @@ hr{
 }
 #img-logo-aboutUs{
     width: 500px;
+}
+.container-miembros{
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+}
+.card-miembro{
+    text-align: center;
+    background-color: #800F75;
+    border-radius: 10px;
+    padding: 30px;
+    margin: 20px 0px 50px 0px;   
+}
+.info-miembro{
+    margin-top: 50px;
+}
+@media (max-width: 768px) {
+    .section-aboutus{
+        flex-direction: column;
+        text-align: center;
+    }
+    .div-aboutus {
+        width: 80%;
+        margin: 0 auto; /* Centrar el contenido */
+        display: flex;
+        justify-content: center;
+        text-align: center;
+        flex-direction: column;
+    }
+
+    #img-logo-aboutUs {
+        width: 350px; /* Reducir el tamaño del logo */
+        text-align: center;
+    }
+    .container-miembros {
+        flex-direction: column; /* Cambiar a diseño vertical */
+        align-items: center; /* Centrar los elementos */
+    }
+    .card-miembro {
+
+        margin: 10px 0; /* Reducir el margen */
+    }
 }
