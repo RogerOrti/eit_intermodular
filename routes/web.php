@@ -20,7 +20,7 @@ Route::get('/', function () {
 })->name('home');
 
 Route::get('/eventos', function () {
-    return view('eventos'); // Para la vista eventos.blade.php
+    return view('events.eventos'); // Para la vista eventos.blade.php
 })->name('eventos');
 
 Route::get('/about-us', function () {
@@ -37,7 +37,7 @@ Route::get('/tickets', function () {
 })->name('tickets');
 
 Route::get('/evento', function () {
-    return view('evento'); // Para la vista evento.blade.php
+    return view('events.evento'); // Para la vista evento.blade.php
 })->name('evento');
 
 
