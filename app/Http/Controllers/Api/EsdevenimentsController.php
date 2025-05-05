@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Http\Controllers\Controller;
-use App\Http\Resources\EsdevenimentResource;
 use App\Models\Esdeveniment;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
+use Illuminate\Database\QueryException;
+use App\Http\Resources\EsdevenimentResource;
 
 class EsdevenimentsController extends Controller
 {
@@ -14,12 +16,16 @@ class EsdevenimentsController extends Controller
      */
     public function index(Request $request)
     {
-        $limit = $request->query('limit', 6); // Limita el número de eventos a 6 por defecto.
-        $esdeveniments = Esdeveniment::select('id_esdeveniment', 'nom', 'descripcio', 'direccio', 'data_inici', 'data_fi' ,'imatge')
-            ->take($limit)
-            ->get();
+        // $limit = $request->query('limit', 6); // Limita el número de eventos a 6 por defecto.
+        // $esdeveniments = Esdeveniment::select('id_esdeveniment', 'nom', 'descripcio', 'direccio', 'data_inici', 'data_fi' ,'imatge')
+        //     ->take($limit)
+        //     ->get();
 
-        return response()->json($esdeveniments);
+        // return response()->json($esdeveniments);
+
+        $esdevenimet = Esdeveniment::all();
+
+        return EsdevenimentResource::collection($esdevenimet);
     }
 
     /**
@@ -27,27 +33,47 @@ class EsdevenimentsController extends Controller
      */
     public function store(Request $request)
     {
-        $validatedData = $request->validate([
-            'nom' => 'required|string|max:255',
-            'descripcio' => 'required|string',
-            'direccio' => 'required|string',
-            'data_inici' => 'required|date',
-            'data_fi' => 'required|date',
-            'image' => 'required|image|max:2048', // Valida que sea una imagen
-        ]);
 
-        // Guarda la imagen en el sistema de archivos
-        $path = $request->file('image')->store('public/media');
 
-        // Guarda los datos del evento en la base de datos
-        $esdeveniment = Esdeveniment::create([
-            'nom' => $validatedData['nom'],
-            'descripcio' => $validatedData['descripcio'],
-            'direccio' => $validatedData['direccio'],
-            'image' => Storage::url($path), // Guarda la URL pública
-        ]);
+        try {
+            DB::beginTransaction();
 
-        return redirect()->back()->with('success', 'Evento creado con éxito.');
+            $esdeveniment = new Esdeveniment();
+
+            $esdeveniment->nom = $request->input();
+            $esdeveniment->descripcio = $request->input();
+            $esdeveniment->direccio = $request->input();
+            $esdeveniment->empreses_id_usuaris = $request->input();
+
+            $esdeveniment->save();
+
+            DB::commit();
+        } catch (QueryException $e) {
+            DB::rollBack();
+        }
+
+
+        // $validatedData = $request->validate([
+        //     'nom' => 'required|string|max:255',
+        //     'descripcio' => 'required|string',
+        //     'direccio' => 'required|string',
+        //     'data_inici' => 'required|date',
+        //     'data_fi' => 'required|date',
+        //     'image' => 'required|image|max:2048', // Valida que sea una imagen
+        // ]);
+
+        // // Guarda la imagen en el sistema de archivos
+        // $path = $request->file('image')->store('public/media');
+
+        // // Guarda los datos del evento en la base de datos
+        // $esdeveniment = Esdeveniment::create([
+        //     'nom' => $validatedData['nom'],
+        //     'descripcio' => $validatedData['descripcio'],
+        //     'direccio' => $validatedData['direccio'],
+        //     'image' => Storage::url($path), // Guarda la URL pública
+        // ]);
+
+        // return redirect()->back()->with('success', 'Evento creado con éxito.');
     }
 
     /**

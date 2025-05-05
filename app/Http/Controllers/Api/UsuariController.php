@@ -46,7 +46,6 @@ class UsuariController extends Controller
 
             $usuari->save();
 
-
             if ($usuari->id_rol_usuaris == 2) {
             
                 $empresa = new Empresa();
@@ -56,9 +55,6 @@ class UsuariController extends Controller
                 $empresa->codi_postal = $request->input("codiPostal");
                 $empresa->id_tipus_empreses = $request->input("tipusEmpresa");
                 $empresa->id_usuaris = $usuari->id_usuaris;
-
-                $prova_usuari = $usuari->id_usuaris;
-
 
                 $empresa->save();
 
@@ -104,6 +100,19 @@ class UsuariController extends Controller
      */
     public function destroy(Usuaris $usuaris)
     {
-        //
+
+        try {
+            DB::beginTransaction();
+
+            $usuaris->delete();
+
+
+            DB::commit();
+        } catch (QueryException $e) {
+            DB::rollBack();
+        }
+
+
+
     }
 }
