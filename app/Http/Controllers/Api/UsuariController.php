@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Clases\Utilitat;
 use Exception;
 use App\Models\Empresa;
 use App\Models\Usuaris;
@@ -72,11 +73,19 @@ class UsuariController extends Controller
 
             DB::commit();
 
-        } catch (QueryException $e) {
+            $response = redirect()->route('showLogin');
+
+        } catch (QueryException $ex) {
+
+            $missatge = Utilitat::errorMessage($ex);
             DB::rollBack();
+            $response = response()->json([
+                'error' => $missatge,
+            ], 400);
             
         }
 
+        return  $response;
     }
 
     /**
@@ -84,7 +93,13 @@ class UsuariController extends Controller
      */
     public function show(Usuaris $usuaris)
     {
-        //
+        $usuari = Usuaris::find($usuaris);
+
+        if (!$usuari) {
+            return response()->json(['missatge' => 'Usuari no trobat'], 404);
+        }
+    
+        return new UsuariResource($usuari);
     }
 
     /**
@@ -105,7 +120,6 @@ class UsuariController extends Controller
             DB::beginTransaction();
 
             $usuaris->delete();
-
 
             DB::commit();
         } catch (QueryException $e) {

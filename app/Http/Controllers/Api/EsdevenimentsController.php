@@ -6,6 +6,7 @@ use App\Models\Esdeveniment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Database\QueryException;
 use App\Http\Resources\EsdevenimentResource;
 
@@ -34,6 +35,7 @@ class EsdevenimentsController extends Controller
     public function store(Request $request)
     {
 
+        $usuari = Auth::user();
 
         try {
             DB::beginTransaction();
@@ -43,13 +45,19 @@ class EsdevenimentsController extends Controller
             $esdeveniment->nom = $request->input();
             $esdeveniment->descripcio = $request->input();
             $esdeveniment->direccio = $request->input();
-            $esdeveniment->empreses_id_usuaris = $request->input();
+            $esdeveniment->empreses_id_usuaris = $usuari->id_usuaris;
 
             $esdeveniment->save();
 
             DB::commit();
+
+            return redirect();
+
         } catch (QueryException $e) {
+
             DB::rollBack();
+
+            return redirect()->back()->with('error', 'Error en crear l\'esdeveniment.');
         }
 
 
