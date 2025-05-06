@@ -8,6 +8,7 @@ import registerVue from './components/auth/register.vue';
 import formEvent from './components/events/event.vue';
 import cardEsdeveniment from "./components/esdeveniment/cardEsdeveniment.vue";
 import carrusel from "./components/home/carrusel.vue";
+import perfil from './components/profile/perfil.vue';
 
 const app = createApp({});
 app.component('register', registerVue);
