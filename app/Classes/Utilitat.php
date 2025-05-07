@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Clases;
+namespace App\Classes;
 
 use Illuminate\Database\QueryException;
 

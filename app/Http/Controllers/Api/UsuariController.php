@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Clases\Utilitat;
+
 use Exception;
 use App\Models\Empresa;
 use App\Models\Usuaris;
+use App\Classes\Utilitat;
 use App\Models\Assistent;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -81,6 +82,7 @@ class UsuariController extends Controller
             DB::rollBack();
             $response = response()->json([
                 'error' => $missatge,
+                // 'input' =>$request->all()
             ], 400);
             
         }
@@ -91,14 +93,8 @@ class UsuariController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Usuaris $usuaris)
+    public function show(Usuaris $usuari)
     {
-        $usuari = Usuaris::find($usuaris);
-
-        if (!$usuari) {
-            return response()->json(['missatge' => 'Usuari no trobat'], 404);
-        }
-    
         return new UsuariResource($usuari);
     }
 
