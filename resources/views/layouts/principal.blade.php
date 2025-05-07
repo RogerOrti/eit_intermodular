@@ -24,6 +24,63 @@
         </ul>
     </nav>
 </header>
+
+<nav class="navbar navbar-expand-lg bg-primary">
+    <div class="container-fluid">
+      <a class="navbar-brand text-white" href="{{ route('home') }}">
+        <img src="{{ asset('media/logo.png')}}" alt="Imagen logo" height="30">
+        EIT
+      </a>
+      
+      <!-- Botó del menú hamburguesa per a mòbils -->
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent"
+        aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+  
+      <!-- Contingut del menú -->
+      <div class="collapse navbar-collapse" id="navbarContent">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active text-white" aria-current="page" href="{{ route('home') }}">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white" href="{{ route('eventos') }}">Esdeveniments</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white" href="{{ route('about') }}">About us</a>
+          </li>
+
+
+
+          @if (!Auth::user())
+          <li class="nav-item">
+            <a class="nav-link text-white" href="{{ route('showLogin') }}"> <img src="{{ asset('media/iconoUsuario.png')}}">Iniciar sessió</a>
+          </li>
+          @else
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown"
+              aria-expanded="false">
+              {{ Auth::user()->nom }}
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end">
+              <li><a class="dropdown-item" href=" {{ route('')}} ">Perfil</a></li>
+              <li><a class="dropdown-item" href="{{ route('logout') }}">Tancar sessió</a></li>
+            </ul>
+          </li>
+          @endif
+
+
+        </ul>
+      </div>
+    </div>
+  </nav>
+  
+
+
+
+
+
 @yield('home')
 @yield('eventos')
 @yield('evento')

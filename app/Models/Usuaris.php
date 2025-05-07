@@ -15,8 +15,8 @@ class Usuaris extends Authenticatable
     use HasFactory;
 
     protected $table = "usuaris";
-    protected $primary_key = "id_usuaris";
-    public $timestamp = false;
+    protected $primaryKey = "id_usuaris";
+    public $timestamps = false;
 
     public function rolUsuari()
     {

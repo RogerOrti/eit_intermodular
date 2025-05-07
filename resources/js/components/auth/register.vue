@@ -1,6 +1,9 @@
 <template>
+    <div v-if="errorMessage" class="alert alert-danger mt-2">
+        {{ errorMessage }}
+    </div>
     <div class="container rounded bg-primary mt-3">
-        <form method="POST">
+        <form>
             <div class="mb-3">
                 <label for="" class="form-label">Tipus usuari</label>
                 <select name="tipusUsuari" id="" class="form-control" v-model="usuari.tipusUsuari">
@@ -74,7 +77,7 @@
                 </div>
             </div>
             <div class="mt-3">
-                <button type="submit" class="btn btn-secondary" @click="guardarUsuari()">Registrar</button>
+                <button type="button" class="btn btn-secondary" @click="guardarUsuari()">Registrar</button>
             </div>
         </form>
     </div>
@@ -101,13 +104,16 @@ export default {
                 codiPostal: false,
                 dni: false,
             },
-            errors: []
+            errors: [],
+            errorMessage: '',
         }
 
     },
     methods: {
 
         guardarUsuari() {
+
+            this.errorMessage = '';
 
             this.validarDades();
 
@@ -126,9 +132,16 @@ export default {
                     console.log(response);
                     alert("Usuari creat correctament");
                 })
-                .catch(() => {
-                    alert("Errors al registar l'usuari");
-                })
+                .catch((error) => {
+                    if (error.response && error.response.status === 400 && error.response.data.error) {
+                        this.errorMessage = error.response.data.error;
+                    } else {
+                        this.errorMessage = "S'ha produït un error inesperat al registrar l'usuari.";
+                    }
+                    if (error.response.data.input) {
+                        this.usuari = error.response.data.input;
+                    }
+                });
         },
         validarDades() {
             // Reinicialitzar errors abans de validar
