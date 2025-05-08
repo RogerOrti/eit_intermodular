@@ -15,4 +15,5 @@ app.component('register', registerVue);
 app.component('formevent', formEvent);
 app.component("card-esdeveniment", cardEsdeveniment);
 app.component("carrusel", carrusel);
+app.component("perfil", perfil);
 app.mount('#app');
