@@ -55,7 +55,7 @@
 
           @if (!Auth::user())
           <li class="nav-item">
-            <a class="nav-link text-white" href="{{ route('showLogin') }}"> <img src="{{ asset('media/iconoUsuario.png')}}">Iniciar sessió</a>
+            <a class="nav-link text-white" href="{{ route('showLogin') }}"><i class="bi bi-person-fill"></i>Iniciar sessió</a>
           </li>
           @else
           <li class="nav-item dropdown">
@@ -64,7 +64,7 @@
               {{ Auth::user()->nom }}
             </a>
             <ul class="dropdown-menu dropdown-menu-end">
-              <li><a class="dropdown-item" href=" {{ route('')}} ">Perfil</a></li>
+              <li><a class="dropdown-item" href=" {{ route('perfil')}} ">Perfil</a></li>
               <li><a class="dropdown-item" href="{{ route('logout') }}">Tancar sessió</a></li>
             </ul>
           </li>
