@@ -42,13 +42,13 @@
       <div class="collapse navbar-collapse" id="navbarContent">
         <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link active text-white" aria-current="page" href="{{ route('home') }}">Home</a>
+            <a class="nav-link active text-white" aria-current="page" href="{{ route('home') }}"><i class="bi bi-house-fill"></i> Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link text-white" href="{{ route('eventos') }}">Esdeveniments</a>
+            <a class="nav-link text-white" href="{{ route('eventos') }}"><i class="bi bi-calendar-fill"></i> Esdeveniments</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link text-white" href="{{ route('about') }}">About us</a>
+            <a class="nav-link text-white" href="{{ route('about') }}"><i class="bi bi-people-fill"></i> About us</a>
           </li>
 
 
