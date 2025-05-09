@@ -4,45 +4,17 @@
 
 
         {{ usuari.nom }}
-
-        <div v-if="usuari.tipus_usuari == 2">
-            <div>
-            <label for="">Nom</label>
-            <input type="text" placeholder="" name="nom">
-        </div>
-        <div>
-            <label for="">Cognom</label>
-            <input type="text" placeholder="" name="cognom">
-        </div>
-        <div>
-            <label for="">Contrasenya</label>
-            <input type="text">
-        </div>
-        <div>
-            <label for="">DNI</label>
-            <input type="text" placeholder="" name="dni">
-        </div>
-
-        <div>
-            <label for=""></label>
-            <input type="password" placeholder="" name="contrasenya">
-        </div>
-        </div>
-
-        <div v-else>
-
-        </div>
-
+        {{ usuari.correu_electronic }}
 
     </div>
 
 
-    <div class="mt-3">
-        <button class="btn btn-primary" @click="modalEdita()">Editar dades</button>
+    <div>
+        <button class="btn btn-secondary" @click="modalEditar()"><i class="bi bi-plus-circle-fill"></i> Editar dades</button>
     </div>
 
     <div>
-        <button class="btn btn-danger" @click="confirmDelete()">Donar-se de baixa</button>
+        <button class="btn btn-danger" @click="confirmDelete()"><i class="bi bi-trash-fill"></i> Donar-se de baixa</button>
     </div>
 
 
@@ -51,11 +23,11 @@
         <div class="modal-dialog">
             <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Donar de baixa</h5>
+                <h5 class="modal-title text-black">Donar de baixa</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <p>Estàs segur que vols donar-te de baixa?</p>
+                <p class="text-black">Estàs segur que vols donar-te de baixa?</p>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tancar</button>
@@ -66,28 +38,44 @@
     </div>
 
     <!-- Modal editar dades -->
-    <div class="modal" tabindex="-1" id="updateModal">
-        <div class="modal-dialog">
-            <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">Modal title</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <div></div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tancar</button>
-                <button type="button" class="btn btn-primary">Guardar canvis</button>
-            </div>
-            </div>
-        </div>
+<div class="modal" tabindex="-1" id="updateModal">
+  <div class="modal-dialog modal-lg"> <!-- Pots afegir modal-lg per més amplada -->
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title text-black">Editar dades</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="mb-3">
+            <label class="form-label">Nom</label>
+            <input type="text" class="form-control" v-model="usuariAxios.nom">
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Cognoms</label>
+            <input type="text" class="form-control" v-model="usuariAxios.cognoms">
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Correu electrònic</label>
+            <input type="email" class="form-control" v-model="usuariAxios.email">
+          </div>
+          <!-- Afegir més camps seguint la mateixa estructura -->
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tancar</button>
+        <button type="button" class="btn btn-primary" @click="editaUsuari()">Guardar canvis</button>
+      </div>
     </div>
+  </div>
+</div>
+
 
 
 </template>
 <script>
 import axios from 'axios';
+import * as bootstrap from 'bootstrap';
 
 export default {
     props: {
@@ -103,26 +91,31 @@ export default {
         }
     },
     methods: {
-        confirmDelete(){},
-        deleteUsuari(){},
-        modalEdita(){},
-        editaUsuari(){},
+        confirmDelete() {
+            this.myModal = new bootstrap.Modal('#deleteModal')
+            this.myModal.show();
+        },
+        deleteUsuari() {
+
+            const me = this;
+            axios
+            .delete('usuari/' + me.usuari.id_usuaris)
+            .then(response =>{
+                me.myModal.hide()
+            })
+        },
+        modalEditar() {
+            this.myModal = new bootstrap.Modal('#updateModal')
+            this.myModal.show();
+        },
+        editarUsuari() {
+
+        },
     },
     mounted() {
-      
-        const me = this;
 
-        axios
-        .put('usuari/')
-        .then(response => {
-
-        })
-        .catch(error =>{
-
-        })
     },
 }
 </script>
 <style>
-    
 </style>

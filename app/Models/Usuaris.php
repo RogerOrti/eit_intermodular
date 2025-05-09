@@ -20,17 +20,17 @@ class Usuaris extends Authenticatable
 
     public function rolUsuari()
     {
-        return $this->belongsTo(rolUsuaris::class, 'id_usuaris','id_rol_usuaris');
+        return $this->belongsTo(rolUsuaris::class, 'id_usuaris');
     }
 
     public function empresa()
     {
-        return $this->hasOne(Empresa::class, 'id_usuaris', 'id_usuaris');
+        return $this->hasOne(Empresa::class, 'id_usuaris');
     }
 
     public function assistent()
     {
-        return $this->hasOne(Assistent::class, 'id_usuaris', 'id_usuaris');
+        return $this->hasOne(Assistent::class, 'id_usuaris');
     }
 
 } 
