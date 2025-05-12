@@ -49,24 +49,24 @@
         <form>
         <div class="row">
           <div class="col-3">
-            <label class="form-label text-black">Nom</label>
-            <input type="text" class="form-control" v-model="usuariAxios.nom">
+            <label for="nom" class="form-label text-black">Nom</label>
+            <input type="text" class="form-control" v-model="usuariAxios.nom" id="nom" name="nom">
           </div>
           <div v-if="usuari.tipus_usuari == 3">
             <div class="col-3">
-              <label class="form-label text-black">Cognom</label>
-              <input type="text" class="form-control" v-model="usuariAxios.cognom">
+              <label for="cognom" class="form-label text-black">Cognom</label>
+              <input type="text" class="form-control" v-model="usuariAxios.cognom" id="cognom" name="cognom">
             </div>
           </div>
           <div class="col-3">
-            <label class="form-label text-black">Correu electrònic</label>
-            <input type="email" class="form-control" v-model="usuariAxios.email">
+            <label for="email" class="form-label text-black">Correu electrònic</label>
+            <input type="email" class="form-control" v-model="usuariAxios.email" id="email" name="email">
           </div>
         </div> 
         <div class="row">
           <div class="col-3">
-            <label class="form-label text-black">Contrasenya</label>
-            <input type="email" class="form-control" v-model="usuariAxios.contrasenya">
+            <label for="contrasenya" class="form-label text-black">Contrasenya</label>
+            <input type="email" class="form-control" v-model="usuariAxios.contrasenya" id="contrasenya" name="contrasenya">
           </div>
           <div v-if="usuari.tipus_usuari == 2">
             <div class="col-3">
@@ -83,14 +83,18 @@
         </div>
         <div v-if="usuari.tipus_usuari == 2">
           <div class="row">
-            <div class="col">
+            <div class="col-4">
               <label for="" class="form-label text-black">Direccio</label>
               <input type="text" class="form-control" v-model="usuariAxios.direccio">
             </div>
-            <div class="col">
+            <div class="col-3">
               <label for="" class="form-label text-black">Tipus empresa</label>
-              <select name="" id="" class="form-control" v-model="usuariAxios.tipus_empresa">
-                <option value=""></option>
+              <select name="tipusEmpresa" id="tipusEmpresa" class="form-control" v-model="usuariAxios.tipus_empresa"
+              required>
+                <option v-for="tipus in tipusEmpreses" :key="tipus.id_tipus_empreses"
+                  :value="tipus.id_tipus_empreses">
+                  {{ tipus.tipus_empreses }}
+                </option>
               </select>
             </div>
           </div>
@@ -121,6 +125,7 @@ export default {
     },
     data() {
         return {
+            tipusEmpreses: [],
             usuariAxios: {},
             myModal: {},
         }
@@ -152,9 +157,24 @@ export default {
                 window.location.href = "";
             })
         },
+        agafarTipusEmpresa() {
+
+          const me = this;
+
+          axios
+            .get("tipusEmpresa")
+            .then((response) => {
+              me.tipusEmpreses = response.data.data;
+            })
+            .catch((error) => {
+              error.response.data.errors.forEach((error) => {
+                alert(error);
+                });
+            })
+        }
     },
     mounted() {
-
+      this.agafarTipusEmpresa();
     },
 }
 </script>
