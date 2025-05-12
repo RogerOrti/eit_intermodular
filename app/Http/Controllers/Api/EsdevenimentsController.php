@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Classes\Utilitat;
 use App\Models\Esdeveniment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -42,23 +43,29 @@ class EsdevenimentsController extends Controller
 
             $esdeveniment = new Esdeveniment();
 
-            $esdeveniment->nom = $request->input();
-            $esdeveniment->descripcio = $request->input();
-            $esdeveniment->direccio = $request->input();
-            $esdeveniment->empreses_id_usuaris = $usuari->id_usuaris;
+            $esdeveniment->nom = $request->input("nom");
+            $esdeveniment->descripcio = $request->input("descripcio");
+            $esdeveniment->direccio = $request->input("direccio");
+            $esdeveniment->empreses_id_usuaris = $request->input("id_usuaris");
 
             $esdeveniment->save();
 
             DB::commit();
 
-            return redirect();
+            $response = redirect()->route('evento');
 
-        } catch (QueryException $e) {
+        } catch (QueryException $ex) {
 
+            $missatge = Utilitat::errorMessage($ex);
             DB::rollBack();
+            $response = response()->json([
+                'error' => $missatge,
+                // 'input' =>$request->all()
+            ], 400);
 
-            return redirect()->back()->with('error', 'Error en crear l\'esdeveniment.');
         }
+
+        return $response;
 
 
         // $validatedData = $request->validate([

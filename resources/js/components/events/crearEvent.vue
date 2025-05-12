@@ -23,10 +23,18 @@
 import axios from 'axios';
 
 export default {
+    props: {
+        usuari : {
+            type: Object,
+            required: true
+        }
+    },
     data(){
         return {
 
-            esdeveniment:{}
+            esdeveniment:{
+                id_usuaris: this.usuari.id_usuaris
+            }
         }
     },
     methods: {
