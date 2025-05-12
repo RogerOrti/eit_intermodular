@@ -5,4 +5,14 @@
 @section('evento')
 
 
+
+@if (Auth::user())
+    
+@else
+    
+@endif
+<div id="app">
+    
+</div>
+
 @endsection
