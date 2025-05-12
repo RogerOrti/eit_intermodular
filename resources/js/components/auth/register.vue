@@ -129,8 +129,6 @@ export default {
                 .post("usuari", me.usuari)
                 .then((response) => {
                     me.usuari = response.data;
-                    console.log(response);
-                    alert("Usuari creat correctament");
                 })
                 .catch((error) => {
                     if (error.response && error.response.status === 400 && error.response.data.error) {
