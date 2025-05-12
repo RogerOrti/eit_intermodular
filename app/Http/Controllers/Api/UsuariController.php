@@ -77,7 +77,6 @@ class UsuariController extends Controller
             $response = redirect()->route('showLogin');
 
         } catch (QueryException $ex) {
-
             $missatge = Utilitat::errorMessage($ex);
             DB::rollBack();
             $response = response()->json([
@@ -103,7 +102,26 @@ class UsuariController extends Controller
      */
     public function update(Request $request, Usuaris $usuaris)
     {
-        //
+        try {
+
+            DB::beginTransaction();
+
+            $usuaris->nom = $request->input("");
+            $usuaris->correu_electronic = $request->input("");
+            $usuaris->contrasenya = $request->input("");
+            $usuaris->telefon = $request->input("");
+
+            DB::commit();
+
+        } catch (QueryException $ex) {
+            $missatge = Utilitat::errorMessage($ex);
+            DB::rollBack();
+            $response = response()->json([
+                'error' => $missatge,
+            ], 400);
+        }
+
+        return $response;
     }
 
     /**

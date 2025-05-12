@@ -44,8 +44,8 @@ Route::get('/evento', function () {
 
 
 Route::get('/crearevento', function () {
-    return view('events.crearEvent'); // Para la vista crearEvento.blade.php
-})->name('crearevento');
+    return view('events.crearEvent'); 
+})->name('crearEvent');
 
 Route::get('/perfil', function() {
     return view('perfil.perfil');

@@ -39,7 +39,7 @@
         </div>
         <div class="solicitar-evento centrar-elementos">
             <h3>Vull crear un esdeveniment!</h3>
-            <a class="btn-general" href="{{ route('crearevento') }}">SOL·LICITAR</a>
+            <a class="btn-general" href="{{ route('crearEvent') }}">SOL·LICITAR</a>
         </div>
         <div class="container-valores">
             <div class="div-valores">

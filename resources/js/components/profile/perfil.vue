@@ -47,19 +47,54 @@
       </div>
       <div class="modal-body">
         <form>
-          <div class="mb-3">
-            <label class="form-label">Nom</label>
+        <div class="row">
+          <div class="col-3">
+            <label class="form-label text-black">Nom</label>
             <input type="text" class="form-control" v-model="usuariAxios.nom">
           </div>
-          <div class="mb-3">
-            <label class="form-label">Cognoms</label>
-            <input type="text" class="form-control" v-model="usuariAxios.cognoms">
+          <div v-if="usuari.tipus_usuari == 3">
+            <div class="col-3">
+              <label class="form-label text-black">Cognom</label>
+              <input type="text" class="form-control" v-model="usuariAxios.cognom">
+            </div>
           </div>
-          <div class="mb-3">
-            <label class="form-label">Correu electrònic</label>
+          <div class="col-3">
+            <label class="form-label text-black">Correu electrònic</label>
             <input type="email" class="form-control" v-model="usuariAxios.email">
           </div>
-          <!-- Afegir més camps seguint la mateixa estructura -->
+        </div> 
+        <div class="row">
+          <div class="col-3">
+            <label class="form-label text-black">Contrasenya</label>
+            <input type="email" class="form-control" v-model="usuariAxios.contrasenya">
+          </div>
+          <div v-if="usuari.tipus_usuari == 2">
+            <div class="col-3">
+              <label class="form-label text-black">NIF</label>
+              <input type="password" class="form-control" v-model="usuariAxios.nif">
+            </div>
+          </div>
+          <div v-else>
+            <div class="col-3">
+              <label class="form-label text-black">DNI</label>
+              <input type="password" class="form-control" v-model="usuariAxios.dni">
+            </div>
+          </div>
+        </div>
+        <div v-if="usuari.tipus_usuari == 2">
+          <div class="row">
+            <div class="col">
+              <label for="" class="form-label text-black">Direccio</label>
+              <input type="text" class="form-control" v-model="usuariAxios.direccio">
+            </div>
+            <div class="col">
+              <label for="" class="form-label text-black">Tipus empresa</label>
+              <select name="" id="" class="form-control" v-model="usuariAxios.tipus_empresa">
+                <option value=""></option>
+              </select>
+            </div>
+          </div>
+        </div>
         </form>
       </div>
       <div class="modal-footer">
@@ -102,6 +137,7 @@ export default {
             .delete('usuari/' + me.usuari.id_usuaris)
             .then(response =>{
                 me.myModal.hide()
+                window.location.href = "";
             })
         },
         modalEditar() {
@@ -109,7 +145,12 @@ export default {
             this.myModal.show();
         },
         editarUsuari() {
-
+            axios
+            .put('usuari/' + me.usuari.id_usuaris)
+            .then(response =>{
+                me.myModal.hide()
+                window.location.href = "";
+            })
         },
     },
     mounted() {
