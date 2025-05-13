@@ -31,7 +31,6 @@ export default {
     },
     data(){
         return {
-
             esdeveniment:{
                 id_usuaris: this.usuari.id_usuaris
             }
@@ -43,11 +42,12 @@ export default {
 
             const me = this;
 
+            console.log(me.esdeveniment);
+
             axios
             .post('esdeveniment', me.esdeveniment)
             .then((response) => {
-                console.log(response.data)
-                alert("Esdeveniment creat correctament");
+
             })
             .catch((err) => {
                 alert("S'ha produït un error");

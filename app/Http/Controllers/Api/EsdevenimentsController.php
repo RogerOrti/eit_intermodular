@@ -36,8 +36,6 @@ class EsdevenimentsController extends Controller
     public function store(Request $request)
     {
 
-        $usuari = Auth::user();
-
         try {
             DB::beginTransaction();
 
@@ -96,9 +94,7 @@ class EsdevenimentsController extends Controller
      */
     public function show(Esdeveniment $esdeveniment)
     {
-        $esdeveniment = Esdeveniment::where($esdeveniment);
-
-        return EsdevenimentResource::collection($esdeveniment);
+        return new EsdevenimentResource($esdeveniment);
     }
 
     /**
