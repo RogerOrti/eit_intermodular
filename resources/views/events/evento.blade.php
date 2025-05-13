@@ -4,15 +4,8 @@
 
 @section('evento')
 
-
-
-@if (Auth::user())
-    
-@else
-    
-@endif
 <div id="app">
-    
+    <esdeveniment></esdeveniment>
 </div>
 
 @endsection
