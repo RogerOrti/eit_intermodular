@@ -2,18 +2,24 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Http\Controllers\Controller;
-use App\Http\Resources\ExposicioResource;
 use App\Models\Exposicio;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
+use Illuminate\Database\QueryException;
+use App\Http\Resources\ExposicioResource;
 
 class ExposicioController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
+
+        $query = Exposicio::query();
+
+
         $exposicions = Exposicio::all();
 
         return ExposicioResource::collection($exposicions);
@@ -24,7 +30,27 @@ class ExposicioController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        try {
+            DB::beginTransaction();
+
+            $exposicio = new Exposicio();
+
+            $exposicio->nom = $request->input('nom');
+            $exposicio->descripcio = $request->input('descripcio');
+            $exposicio->id_tipus_exposicions = $request->input();
+            $exposicio->id_esdeveniment = $request->input();
+            
+            $exposicio->save();
+
+            DB::commit();
+
+        } catch (QueryException $ex) {
+            $missatge = Utilitat::errorMessage($ex);
+            DB::rollBack();
+            $response = response()->json([
+                'error' => $missatge,
+            ], 400);
+        }
     }
 
     /**
