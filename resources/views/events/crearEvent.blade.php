@@ -5,7 +5,7 @@
 @section('home')
     
     <div id="app" class="container bg-primary">
-        <formevent :usuari=' @json(Auth::user()) '></formevent>
+        <formevent :usuari='@json(Auth::user())'></formevent>
     </div>
 
 

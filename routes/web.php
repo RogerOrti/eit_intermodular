@@ -38,8 +38,9 @@ Route::get('/tickets', function () {
     return view('tickets'); // Para la vista tickets.blade.php
 })->name('tickets');
 
-Route::get('/evento', function () {
-    return view('events.evento'); // Para la vista evento.blade.php
+Route::get('/evento/{id_esdeveniment}', function ($id_esdeveniment) {
+    $esdeveniment = $id_esdeveniment;
+    return view('events.evento', compact('esdeveniment')); // Para la vista evento.blade.php
 })->name('evento');
 
 

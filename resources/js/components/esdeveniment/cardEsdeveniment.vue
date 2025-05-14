@@ -1,12 +1,10 @@
 <template>
     <div class="card-evento" v-for="event in events" :key="event.id_esdeveniment">
-      {{ event.nom }}
-        <img class="img-evento" alt="Imagen del evento">
         <h5 class="elemento-card">{{ event.nom }}</h5>
-        <p class="elemento-card">{{ event.data_inici }} - {{ event.data_fi }}</p>
+        <p class="elemento-card">{{ event.descripcio }}</p>
         <div class="elemento-card">
             <p>{{ event.direccio }}</p>
-            <a class="btn-general" href="" :esdeveniment = "event.id_esdeveniment">Saber més</a>
+            <button type="button" class="btn-general" @click="anarEvent(event.id_esdeveniment)" :esdeveniment="event.id_esdeveniment">Saber més</button>
         </div>
     </div>
   </template>
@@ -24,6 +22,7 @@ export default {
     data() {
       return {
         events: [],
+        idEventos : ''
       };
     },
     methods: {
@@ -36,6 +35,10 @@ export default {
                 .catch(error => {
                     console.error("Error al obtener los eventos:", error);
                 });
+        },
+        anarEvent(id_esdeveniment){
+          this.idEventos = id_esdeveniment
+          window.location.href = `evento/${this.idEventos}`;
         }
     },
     mounted() {

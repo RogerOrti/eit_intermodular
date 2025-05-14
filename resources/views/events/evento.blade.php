@@ -5,7 +5,11 @@
 @section('evento')
 
 <div id="app">
-    <esdeveniment></esdeveniment>
+
+    <h1>{{$esdeveniment}}</h1>
+    <esdeveniment :esdeveniment-id='@json($esdeveniment)'></esdeveniment>
+    <exposicio></exposicio>
+
 </div>
 
 @endsection
