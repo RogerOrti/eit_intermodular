@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Classes\Utilitat;
 use App\Models\Exposicio;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -37,8 +38,8 @@ class ExposicioController extends Controller
 
             $exposicio->nom = $request->input('nom');
             $exposicio->descripcio = $request->input('descripcio');
-            $exposicio->id_tipus_exposicions = $request->input();
-            $exposicio->id_esdeveniment = $request->input();
+            $exposicio->id_tipus_exposicions = $request->input("tipusExpo");
+            $exposicio->id_esdeveniment = $request->input("id_esdeveniment");
             
             $exposicio->save();
 

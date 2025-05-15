@@ -2,15 +2,16 @@
     <div>
         <div>
             <form>
-                <label for=""></label>
-                
+                <div v-for="tipus in tipusExpo" :key="tipus.id_tipus_exposicions">
+                    <button type="button" class="btn-general btn-filtros" @click="filtreExpo(tipus)">{{ tipus.tipus_exposicions }}</button>
+                </div>
             </form>
 
 
 
 
         </div>
-                    <div class="div-filtros">
+                    <!-- <div class="div-filtros">
                         <div class="categoria-flitro">
                             <h5>Tipologia</h5>
                             <div class="tipo-categoria">
@@ -39,7 +40,7 @@
                                 <button class="btn-general btn-filtros">Presentació</button>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
     </div>
 </template>
 <script>
@@ -58,15 +59,13 @@ export default {
             axios
             .get("tipusExposicio")
             .then(response =>{
-                me.tipusExpo = response.data;
+                me.tipusExpo = response.data.data;
                 console.log(me.tipusExpo);
             })
             .catch(error =>{})
         },
-        filtreExpo(){
-            this.$emit("filtrar", {
-
-            });
+        filtreExpo(tipus){
+            this.$emit("filtrar",tipus.id_tipus_exposicions);
             }
     },
     mounted() {
