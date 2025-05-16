@@ -38,7 +38,7 @@ class ExposicioController extends Controller
 
             $exposicio->nom = $request->input('nom');
             $exposicio->descripcio = $request->input('descripcio');
-            $exposicio->id_tipus_exposicions = $request->input("tipusExpo");
+            $exposicio->id_tipus_exposicions = $request->input('tipusExpo');
             $exposicio->id_esdeveniment = $request->input("id_esdeveniment");
             
             $exposicio->save();
@@ -52,6 +52,8 @@ class ExposicioController extends Controller
                 'error' => $missatge,
             ], 400);
         }
+    
+        return $response;
     }
 
     /**
