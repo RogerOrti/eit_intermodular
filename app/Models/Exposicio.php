@@ -20,7 +20,7 @@ class Exposicio extends Model
 
     public function Esdeveniment()
     {
-        return $this->belongsTo(Esdeveniment::class, 'id_exposicio', 'id_esdeveniment');
+        return $this->hasMany(Esdeveniment::class, 'id_exposicio');
     }
 
 }

@@ -7,7 +7,7 @@
         <div class="modal-dialog">
             <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Modal title</h5>
+                <h5 class="modal-title text-black">Nova exposició</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -17,15 +17,14 @@
                 <textarea name="" id="" class="form-control" v-model="exposicio.descripcio"></textarea>
                 <label for="tipusExpo" class="form-label text-black">Tipus d'exposició</label>
                 <select name="tipusExpo" id="tipusExpo" v-model="exposicio.tipusExpo" class="form-control">
-                    <option></option>
                     <option v-for="tipus in tipusExpo" :key="tipus.id_tipus_exposicions" :value="tipus.id_tipus_exposicions">
                         {{ tipus.tipus_exposicions }}
                     </option>
                 </select>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" @click="crearExposicio">Save changes</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tancar</button>
+                <button type="button" class="btn btn-primary" @click="crearExposicio">Crear</button>
             </div>
             </div>
         </div>
@@ -65,9 +64,9 @@ export default {
         crearExposicio(){
             const me = this;
             axios
-            .post("exposicio", me.exposicioAxios)
+            .post("exposicio", me.exposicio)
             .then(response =>{
-                this.myModal.hide();
+                me.myModal.hide();
             })
             .catch(error=>{})
         }

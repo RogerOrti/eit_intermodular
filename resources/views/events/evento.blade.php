@@ -5,15 +5,9 @@
 @section('evento')
 
 <div id="app">
-
-    <h1>{{$esdeveniment}}</h1>
-    @if (Auth::user())
-        <crearexpo :esdeveniment-id='@json($esdeveniment)'></crearexpo>
-    @endif
-
     <esdeveniment :esdeveniment-id='@json($esdeveniment)'></esdeveniment>
-    <exposicio></exposicio>
-
+    <exposicio :esdeveniment-id='@json($esdeveniment)'></exposicio>
+    <crearexpo :esdeveniment-id='@json($esdeveniment)'></crearexpo>
 </div>
 
 @endsection

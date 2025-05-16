@@ -2,6 +2,7 @@
     <div>
         hola
         {{ esdevenimentAxios.nom }}
+        hola
         {{ esdevenimentAxios.descripcio }}
     </div>
 

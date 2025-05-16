@@ -1,9 +1,14 @@
 <template>
     <div>
         <filtre @filtrar="agafarExpo"></filtre>
-        <div class="container-fluid" v-for="expo in exposicions" :key="expo.id_exposicions">
-            <div class="card">
-                {{ expo.nom }}
+        <div class="container" v-for="expo in exposicions" :key="expo.id_exposicions">
+            <div class="card bg-primary">
+                <div class="card-tittle">
+                   <h5>{{ expo.nom }}</h5> 
+                </div>
+                <div class="card-body text-white">
+                    {{ expo.descripcio }}
+                </div>
             </div>
         </div>
     </div>
@@ -26,7 +31,8 @@ export default {
             axios
             .get("exposicio", me.tipus)
             .then(response =>{
-                me.exposicions = response.data
+                me.exposicions = response.data.data
+                console.log("Exposicions:" + me.exposicions);
             })
             .catch(error =>{})
         }
