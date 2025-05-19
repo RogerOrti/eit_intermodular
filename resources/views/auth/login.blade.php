@@ -2,7 +2,7 @@
 
 @section('titol', 'Login')
 
-@section('home')
+@section('contingut')
     
 @if (session('error'))
 <div class="container mt-3">

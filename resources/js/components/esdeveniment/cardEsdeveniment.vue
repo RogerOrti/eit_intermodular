@@ -1,12 +1,19 @@
 <template>
-    <div class="card-evento" v-for="event in events" :key="event.id_esdeveniment">
-        <h5 class="elemento-card">{{ event.nom }}</h5>
-        <p class="elemento-card">{{ event.descripcio }}</p>
-        <div class="elemento-card">
-            <p>{{ event.direccio }}</p>
-            <button type="button" class="btn-general" @click="anarEvent(event.id_esdeveniment)" :esdeveniment="event.id_esdeveniment">Saber més</button>
-        </div>
+<div class="card-evento d-flex flex-column" v-for="event in events" :key="event.id_esdeveniment">
+    <h5 class="elemento-card">{{ event.nom }}</h5>
+    <p class="elemento-card">{{ event.descripcio }}</p>
+    <div class="elemento-card mb-3">
+        <p>{{ event.direccio }}</p>
     </div>
+    
+    <!-- Contenidor del botó amb mt-auto per empènyer-lo abaix -->
+    <div class="mt-auto">
+        <button type="button" class="btn btn-secondary w-100" @click="anarEvent(event.id_esdeveniment)" :esdeveniment="event.id_esdeveniment">
+            Saber més
+        </button>
+    </div>
+</div>
+
   </template>
 
 <script>

@@ -2,7 +2,7 @@
 
 @section('titol', 'Eventos')
 
-@section('eventos')
+@section('contingut')
     <main class="main-general">
         <div class="container-general centrar-elementos">
             <div class="titulo h1-eventos">
@@ -19,7 +19,7 @@
                 <hr>
             </div>
         </div>
-        <div class="div-prox-eventos">
+        {{-- <div class="div-prox-eventos">
             <h3>Pròxims esdeveniments</h3>
             <div class="container-prox-eventos">
                 <div class="container-filtros centrar-elememtos">
@@ -57,7 +57,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> --}}
                 <div class="container-eventos eventos" id="app">
                     <card-esdeveniment :limit="6"><card-esdeveniment>
                 </div>

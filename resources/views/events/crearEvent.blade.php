@@ -2,7 +2,7 @@
 
 @section('titol', 'Crear Esdeveniment' )
 
-@section('home')
+@section('contingut')
     
     <div id="app" class="container bg-primary">
         <formevent :usuari='@json(Auth::user())'></formevent>

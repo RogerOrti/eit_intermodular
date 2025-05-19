@@ -2,7 +2,7 @@
 
 @section('titol', 'Evento')
 
-@section('evento')
+@section('contingut')
 
 <div id="app">
     <esdeveniment :esdeveniment-id='@json($esdeveniment)'></esdeveniment>

@@ -1,15 +1,18 @@
 <template>
     <div>
         <filtre @filtrar="agafarExpo"></filtre>
-        <div class="container" v-for="expo in exposicions" :key="expo.id_exposicions">
-            <div class="card bg-primary">
-                <div class="card-tittle">
-                   <h5>{{ expo.nom }}</h5> 
-                </div>
-                <div class="card-body text-white">
-                    {{ expo.descripcio }}
+        <div class="container mb-3" v-for="expo in exposicions" :key="expo.id_exposicions">
+            <div class="row">
+                <div class="card bg-primary">
+                    <div class="card-tittle">
+                    <h5>{{ expo.nom }}</h5> 
+                    </div>
+                    <div class="card-body text-white">
+                        {{ expo.descripcio }}
+                    </div>
                 </div>
             </div>
+
         </div>
     </div>
 </template>
