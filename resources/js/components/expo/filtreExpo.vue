@@ -2,6 +2,7 @@
     <div>
         <div>
             <form>
+                <button type="button" class="btn-general btn-filtros" @click="filtreExpo(tipus)" value="0">Tots</button>
                 <div v-for="tipus in tipusExpo" :key="tipus.id_tipus_exposicions">
                     <button type="button" class="btn-general btn-filtros" @click="filtreExpo(tipus)">{{ tipus.tipus_exposicions }}</button>
                 </div>

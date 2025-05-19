@@ -22,17 +22,23 @@ export default {
     },
     data() {
         return {
-            exposicions: {}
+            exposicions: []
         }
     },
     methods: {
         agafarExpo(tipus){
             const me = this;
             axios
-            .get("exposicio", me.tipus)
+            .get("exposicio",{
+                    params: {
+                        tipus: tipus
+                    }
+            })
             .then(response =>{
+                console.log("Tipus d'exposició enviada amb l'emit: " + tipus);
+                
                 me.exposicions = response.data.data
-                console.log("Exposicions:" + me.exposicions);
+                // console.log("Exposicions:" + me.exposicions);
             })
             .catch(error =>{})
         }
