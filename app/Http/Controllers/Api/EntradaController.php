@@ -2,10 +2,14 @@
 
 namespace App\Http\Controllers\Api;
 
+use Carbon\Carbon;
+use DB;
+use App\Models\Entrada;
+use App\Classes\Utilitat;
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\EntradaResource;
-use App\Models\Entrada;
-use Illuminate\Http\Request;
+use Illuminate\Database\QueryException;
 
 class EntradaController extends Controller
 {
@@ -24,7 +28,29 @@ class EntradaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
+        try {
+            DB::beginTransaction();
+
+            $entrada = new Entrada();
+
+            $entrada->id_assistent = $request->input();
+            $entrada->id_esdeveniment = $request->input();
+            $entrada->id_assistent = Carbon::now();
+
+            $entrada->save();
+
+            DB::commit();            
+        } catch (QueryException $ex) {
+            $missatge = Utilitat::errorMessage($ex);
+            DB::rollBack();
+            $response = response()->json([
+                'error' => $missatge,
+                // 'input' =>$request->all()
+            ], 400);
+        }
+
+
     }
 
     /**
@@ -32,7 +58,7 @@ class EntradaController extends Controller
      */
     public function show(Entrada $entrada)
     {
-        //
+        return new EntradaResource($entrada);
     }
 
     /**
