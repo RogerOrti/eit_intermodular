@@ -34,3 +34,4 @@ Route::apiResource('tipusEmpresa', TipusEmpresaController::class);
 Route::apiResource('esdeveniment', EsdevenimentsController::class);
 Route::apiResource('exposicio', ExposicioController::class);
 Route::apiResource('tipusExposicio', TipusExposicioController::class);
+Route::apiResource('entrada', EntradaController::class);
