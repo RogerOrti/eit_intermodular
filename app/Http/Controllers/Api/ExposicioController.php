@@ -15,16 +15,29 @@ class ExposicioController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(Request $request)
-    {
+public function index(Request $request)
+{
+    $esdeveniment = $request->input("esdeveniment");
+    $tipus = $request->input('tipus');
 
-        $query = Exposicio::query();
+    $query = Exposicio::query();
 
-
-        $exposicions = Exposicio::all();
-
-        return ExposicioResource::collection($exposicions);
+    // Sempre filtra per esdeveniment
+    if ($esdeveniment) {
+        $query->where('id_esdeveniment', $esdeveniment);
     }
+
+    // Si s'ha afegit tipus, afegeix-lo al filtre també
+    if ($tipus) {
+        $query->where('id_tipus_exposicions', $tipus);
+    }
+
+    $exposicions = $query->get();
+
+    return ExposicioResource::collection($exposicions);
+}
+
+
 
     /**
      * Store a newly created resource in storage.

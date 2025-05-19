@@ -10,7 +10,7 @@
     @vite(['resources/css/app.css','resources/css/app.scss', 'resources/css/style.css', 'resources/js/app.js', 'resources/js/botonFiltro.js'])
 </head>
 <body>
-<header class="header-general">
+{{-- <header class="header-general">
     <div class="div-logo">
         <img class="img-logo-header" src="{{ asset('media/logo.png')}}" alt="Imagen logo">
         <h3><a href="{{ route('home') }}">EIT</a></h3>
@@ -23,12 +23,12 @@
             <li><a href="{{ route('showLogin') }}"><img class="img-icono" src="{{ asset('media/iconoUsuario.png')}}" alt="Icono usuario">Iniciar sesión</a></li>
         </ul>
     </nav>
-</header>
+</header> --}}
 
 <nav class="navbar navbar-expand-lg bg-primary">
     <div class="container-fluid">
       <a class="navbar-brand text-white" href="{{ route('home') }}">
-        <img src="{{ asset('media/logo.png')}}" alt="Imagen logo" height="30">
+        <img src="{{ asset('media/logo.png')}}" alt="Imagen logo" height="70">
         EIT
       </a>
       
@@ -50,9 +50,6 @@
           <li class="nav-item">
             <a class="nav-link text-white" href="{{ route('about') }}"><i class="bi bi-people-fill"></i> About us</a>
           </li>
-
-
-
           @if (!Auth::user())
           <li class="nav-item">
             <a class="nav-link text-white" href="{{ route('showLogin') }}"><i class="bi bi-person-fill"></i>Iniciar sessió</a>
@@ -69,22 +66,14 @@
             </ul>
           </li>
           @endif
-
-
         </ul>
       </div>
     </div>
-  </nav>
-  
-
-
-
-
-
-@yield('home')
-@yield('eventos')
+  </nav> 
+@yield('contingut')
+{{-- @yield('eventos')
 @yield('evento')
-@yield('aboutUs')
+@yield('aboutUs') --}}
 <footer class="footer-general">
     <div class="div-logo-footer centrar-elementos">
         <img class="img-logo-footer" src="{{ asset('media/logo.png')}}" alt="Imagen logo">

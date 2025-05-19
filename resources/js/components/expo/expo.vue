@@ -1,44 +1,71 @@
 <template>
     <div>
         <filtre @filtrar="agafarExpo"></filtre>
-        <div class="container" v-for="expo in exposicions" :key="expo.id_exposicions">
-            <div class="card bg-primary">
-                <div class="card-tittle">
-                   <h5>{{ expo.nom }}</h5> 
-                </div>
-                <div class="card-body text-white">
-                    {{ expo.descripcio }}
+        <div class="container mb-3" v-for="expo in exposicions" :key="expo.id_exposicions">
+            <div class="row">
+                <div class="card bg-primary">
+                    <div class="card-tittle">
+                    <h5>{{ expo.nom }}</h5> 
+                    </div>
+                    <div class="card-body text-white">
+                        {{ expo.descripcio }}
+                    </div>
                 </div>
             </div>
+
         </div>
     </div>
 </template>
 <script>
 import axios from 'axios';
 import filtre from './filtreExpo.vue';
+
 export default {
-    components:{
+    props: {
+        esdevenimentId: Number,
+    },
+    components: {
         filtre
     },
     data() {
         return {
-            exposicions: {}
-        }
+            exposicions: []
+        };
     },
     methods: {
-        agafarExpo(tipus){
-            const me = this;
-            axios
-            .get("exposicio", me.tipus)
-            .then(response =>{
-                me.exposicions = response.data.data
-                console.log("Exposicions:" + me.exposicions);
+        agafarExpo(tipus) {
+            axios.get("exposicio", {
+                params: {
+                    tipus: tipus,
+                    esdeveniment: this.esdevenimentId
+                }
             })
-            .catch(error =>{})
+            .then(response => {
+                console.log("Tipus filtrat: " + tipus);
+                this.exposicions = response.data.data;
+            })
+            .catch(error => {
+                console.error(error);
+            });
         }
     },
-}
+    mounted() {
+        // Crida inicial per carregar exposicions de l'esdeveniment
+        axios.get("exposicio", {
+            params: {
+                esdeveniment: this.esdevenimentId
+            }
+        })
+        .then(response => {
+            this.exposicions = response.data.data;
+        })
+        .catch(error => {
+            console.error(error);
+        });
+    }
+};
 </script>
+
 <style>
      
 </style>

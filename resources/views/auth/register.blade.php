@@ -2,8 +2,8 @@
 
 @section('titol', 'Registre')
 
-@section('home')
-    <div id="app">
+@section('contingut')
+    <div id="app" class="mb-3">
         <register></register>    
     </div>
 @endsection

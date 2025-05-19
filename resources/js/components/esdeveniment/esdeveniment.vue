@@ -1,9 +1,10 @@
 <template>
-    <div>
-        hola
-        {{ esdevenimentAxios.nom }}
-        hola
-        {{ esdevenimentAxios.descripcio }}
+    <div class="container-fluid">
+
+        <h1>{{ esdevenimentAxios.nom }}</h1>
+        
+
+        <p>{{ esdevenimentAxios.descripcio }}</p>
     </div>
 
 

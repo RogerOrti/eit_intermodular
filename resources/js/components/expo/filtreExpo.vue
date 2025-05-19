@@ -1,46 +1,25 @@
 <template>
     <div>
-        <div>
-            <form>
-                <div v-for="tipus in tipusExpo" :key="tipus.id_tipus_exposicions">
-                    <button type="button" class="btn-general btn-filtros" @click="filtreExpo(tipus)">{{ tipus.tipus_exposicions }}</button>
-                </div>
-            </form>
+<div class="card bg-primary text-white p-3" style="width: 300px;">
+  <form>
+    <div class="row g-2 flex-wrap" style="width: 500px; flex-direction: row; display: flex;" >
+      <div
+        v-for="tipus in tipusExpo"
+        :key="tipus.id_tipus_exposicions"
+        class="col-4"
+      >
+        <button
+          type="button"
+          class="btn btn-light" style="width: 100px;"
+          @click="filtreExpo(tipus)"
+        >
+          {{ tipus.tipus_exposicions }}
+        </button>
+      </div>
+    </div>
+  </form>
+</div>
 
-
-
-
-        </div>
-                    <!-- <div class="div-filtros">
-                        <div class="categoria-flitro">
-                            <h5>Tipologia</h5>
-                            <div class="tipo-categoria">
-                                <button class="btn-general btn-filtros">Tot</button>
-                                <button class="btn-general btn-filtros">Tecnológia</button>
-                                <button class="btn-general btn-filtros">Informàtica</button>
-                            </div>
-                        </div>
-                        <div class="categoria-flitro">
-                            <h5>Recinte</h5>
-                            <div class="tipo-categoria">
-                                <button class="btn-general btn-filtros">Tot</button>
-                                <button class="btn-general btn-filtros">Fira Monjuic</button>
-                                <button class="btn-general btn-filtros">Fira Gran Via</button>
-                                <button class="btn-general btn-filtros">Fira Cornellà</button>
-                                <button class="btn-general btn-filtros">Fira Hospitalet</button>
-                                <button class="btn-general btn-filtros">Fira Sabadell</button>
-                            </div>
-                        </div>
-                        <div class="categoria-flitro">
-                            <h5>Tipus</h5>
-                            <div class="tipo-categoria">
-                                <button class="btn-general btn-filtros">Tot</button>
-                                <button class="btn-general btn-filtros">Exposició</button>
-                                <button class="btn-general btn-filtros">Xerrada</button>
-                                <button class="btn-general btn-filtros">Presentació</button>
-                            </div>
-                        </div>
-                    </div> -->
     </div>
 </template>
 <script>
@@ -49,7 +28,7 @@ import axios from 'axios';
 export default {
     data() {
         return {
-            tipusExpo: {},
+            tipusExpo: [],
             filtre: {}
         }
     },

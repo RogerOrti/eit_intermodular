@@ -2,7 +2,7 @@
 
 @section('titol', 'Home')
 
-@section('home')
+@section('contingut')
     <main class="main-general" id="app">
         <div class="container-general centrar-elementos">
             <div class="titulo">

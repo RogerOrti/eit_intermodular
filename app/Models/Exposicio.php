@@ -15,7 +15,7 @@ class Exposicio extends Model
 
     public function TipusExposicio ()
     {
-        return $this->belongsTo(TipusExposicio::class, 'id_exposicio', 'id_tipus_exposicions');
+        return $this->belongsTo(TipusExposicio::class,'id_tipus_exposicions');
     }
 
     public function Esdeveniment()
