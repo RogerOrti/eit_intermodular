@@ -16,35 +16,53 @@
 <script>
 import axios from 'axios';
 import filtre from './filtreExpo.vue';
+
 export default {
-    components:{
+    props: {
+        esdevenimentId: Number,
+    },
+    components: {
         filtre
     },
     data() {
         return {
             exposicions: []
-        }
+        };
     },
     methods: {
-        agafarExpo(tipus){
-            const me = this;
-            axios
-            .get("exposicio",{
-                    params: {
-                        tipus: tipus
-                    }
+        agafarExpo(tipus) {
+            axios.get("exposicio", {
+                params: {
+                    tipus: tipus,
+                    esdeveniment: this.esdevenimentId
+                }
             })
-            .then(response =>{
-                console.log("Tipus d'exposició enviada amb l'emit: " + tipus);
-                
-                me.exposicions = response.data.data
-                // console.log("Exposicions:" + me.exposicions);
+            .then(response => {
+                console.log("Tipus filtrat: " + tipus);
+                this.exposicions = response.data.data;
             })
-            .catch(error =>{})
+            .catch(error => {
+                console.error(error);
+            });
         }
     },
-}
+    mounted() {
+        // Crida inicial per carregar exposicions de l'esdeveniment
+        axios.get("exposicio", {
+            params: {
+                esdeveniment: this.esdevenimentId
+            }
+        })
+        .then(response => {
+            this.exposicions = response.data.data;
+        })
+        .catch(error => {
+            console.error(error);
+        });
+    }
+};
 </script>
+
 <style>
      
 </style>

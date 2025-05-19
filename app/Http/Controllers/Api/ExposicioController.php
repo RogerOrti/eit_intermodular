@@ -17,16 +17,26 @@ class ExposicioController extends Controller
      */
 public function index(Request $request)
 {
+    $esdeveniment = $request->input("esdeveniment");
     $tipus = $request->input('tipus');
 
-    if ($tipus) {
-        $exposicions = Exposicio::where('id_tipus_exposicions', $tipus)->get();
-    } else {
-        $exposicions = Exposicio::all(); // retorna totes si no hi ha filtre
+    $query = Exposicio::query();
+
+    // Sempre filtra per esdeveniment
+    if ($esdeveniment) {
+        $query->where('id_esdeveniment', $esdeveniment);
     }
+
+    // Si s'ha afegit tipus, afegeix-lo al filtre també
+    if ($tipus) {
+        $query->where('id_tipus_exposicions', $tipus);
+    }
+
+    $exposicions = $query->get();
 
     return ExposicioResource::collection($exposicions);
 }
+
 
 
     /**
