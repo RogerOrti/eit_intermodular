@@ -1,14 +1,26 @@
 <template>
   <div class="carrusel">
-    <!-- Botón para retroceder -->
+    <!-- Botó per retrocedir -->
     <button @click="prevSlide" class="carrusel-btn left">‹</button>
 
-    <!-- Contenedor de la imagen actual -->
+    <!-- Contingut dinàmic: imatge o iframe -->
     <div class="carrusel-div">
-      <img :src="slides[currentIndex].image" :alt="slides[currentIndex].title" class="carrusel-img" />
+      <img
+        v-if="currentSlide.type === 'image'"
+        :src="currentSlide.src"
+        :alt="currentSlide.title"
+        class="carrusel-img"
+      />
+      <iframe
+        v-else-if="currentSlide.type === 'iframe'"
+        :src="currentSlide.src"
+        frameborder="0"
+        allowfullscreen
+        class="carrusel-iframe"
+      ></iframe>
     </div>
 
-    <!-- Botón para avanzar -->
+    <!-- Botó per avançar -->
     <button @click="nextSlide" class="carrusel-btn right">›</button>
   </div>
 </template>
@@ -18,12 +30,18 @@ export default {
   data() {
     return {
       slides: [
-        { id: 1, image: 'media/eventoPrincipal.png', title: 'Slide 1' },
-        { id: 2, image: 'media/evento.png', title: 'Slide 2' },
-        { id: 3, image: 'media/evento.png', title: 'Slide 3' },
+        { id: 1, type: 'image', src: 'media/eventoPrincipal.webp', title: 'Slide 1' },
+        { id: 2, type: 'iframe', src: 'https://www.youtube.com/watch?v=7XFIcPk3cK4&pp=ygUabW9iaWxlIHdvcmxkIGNvbmdyZXNzIDIwMjU%3D', title: 'Iframe' },
+        { id: 3, type: 'image', src: 'media/evento.webp', title: 'Slide 3' },
       ],
-      currentIndex: 0, // Índice de la diapositiva actual
+      currentIndex: 0,
+      intervalId: null,
     };
+  },
+  computed: {
+    currentSlide() {
+      return this.slides[this.currentIndex];
+    },
   },
   methods: {
     nextSlide() {
@@ -32,6 +50,18 @@ export default {
     prevSlide() {
       this.currentIndex = (this.currentIndex - 1 + this.slides.length) % this.slides.length;
     },
+    startAutoSlide() {
+      this.intervalId = setInterval(this.nextSlide, 5000); // Canvia cada 5 segons
+    },
+    stopAutoSlide() {
+      clearInterval(this.intervalId);
+    },
+  },
+  mounted() {
+    this.startAutoSlide();
+  },
+  beforeDestroy() {
+    this.stopAutoSlide();
   },
 };
 </script>
@@ -53,10 +83,16 @@ export default {
   text-align: center;
 }
 
-.carrusel-img {
+.carrusel-img,
+.carrusel-iframe {
   width: 100%;
   height: auto;
   border-radius: 10px;
+  transition: opacity 1s ease-in-out;
+}
+
+.carrusel-iframe {
+  height: 500px; /* o el que vulguis */
 }
 
 .carrusel-btn {
