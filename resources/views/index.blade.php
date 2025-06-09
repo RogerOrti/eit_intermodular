@@ -43,17 +43,17 @@
         </div>
         <div class="container-valores">
             <div class="div-valores">
-                <img class="img-valores" src="{{ asset('media/iconoEstrella.png')}}" alt="Icono estrella">
+                <img class="img-valores" src="{{ asset('media/iconoEstrella.webp')}}" alt="Icono estrella">
                 <h3>Innovació</h3>
                 <p>Esdeveniments moderns i adaptats a les últimes tendències.</p>
             </div>
             <div class="div-valores">
-                <img class="img-valores" src="{{ asset('media/iconoUsuarios.png')}}" alt="Icono personas">
+                <img class="img-valores" src="{{ asset('media/iconoUsuarios.webp')}}" alt="Icono personas">
                 <h3>Col·laboració</h3>
                 <p>Fomentem el treball en equip i el networking.</p>
             </div>
             <div class="div-valores">
-                <img class="img-valores" src="{{ asset('media/iconoComputadora.png')}}" alt="Icono monitor">
+                <img class="img-valores" src="{{ asset('media/iconoComputadora.webp')}}" alt="Icono monitor">
                 <h3>Coneixements</h3>
                 <p>Compartim idees per a créixer junts.</p>
             </div>
