@@ -4,6 +4,8 @@
     </div>
 </template>
 <script>
+import axios from 'axios';
+
 export default {
     data() {
         return {
@@ -12,7 +14,10 @@ export default {
     },
     methods: {
         conseguirEntrada(){
-            
+
+            axios
+
+
         }
     },
 }

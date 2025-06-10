@@ -1,28 +1,33 @@
 <template>
-  <div class="carrusel">
-    <!-- Botó per retrocedir -->
-    <button @click="prevSlide" class="carrusel-btn left">‹</button>
+<div class="carrusel">
+  <!-- <button @click="prevSlide" class="carrusel-btn left">‹</button> -->
 
-    <!-- Contingut dinàmic: imatge o iframe -->
-    <div class="carrusel-div">
+  <!-- Contenidor dels slides -->
+  <div class="carrusel-div">
+    <div
+      v-for="(slide, index) in slides"
+      :key="slide.id"
+      :class="['slide', { active: index === currentIndex }]"
+    >
       <img
-        v-if="currentSlide.type === 'image'"
-        :src="currentSlide.src"
-        :alt="currentSlide.title"
+        v-if="slide.type === 'image'"
+        :src="slide.src"
+        :alt="slide.title"
         class="carrusel-img"
       />
       <iframe
-        v-else-if="currentSlide.type === 'iframe'"
-        :src="currentSlide.src"
+        v-else-if="slide.type === 'iframe'"
+        :src="slide.src"
         frameborder="0"
         allowfullscreen
         class="carrusel-iframe"
       ></iframe>
     </div>
-
-    <!-- Botó per avançar -->
-    <button @click="nextSlide" class="carrusel-btn right">›</button>
   </div>
+
+  <!-- <button @click="nextSlide" class="carrusel-btn right">›</button> -->
+</div>
+
 </template>
 
 <script>
@@ -31,7 +36,7 @@ export default {
     return {
       slides: [
         { id: 1, type: 'image', src: 'media/eventoPrincipal.webp', title: 'Slide 1' },
-        { id: 2, type: 'iframe', src: 'https://www.youtube.com/watch?v=7XFIcPk3cK4&pp=ygUabW9iaWxlIHdvcmxkIGNvbmdyZXNzIDIwMjU%3D', title: 'Iframe' },
+        { id: 2, type: 'iframe', src: 'https://www.youtube.com/embed/7XFIcPk3cK4', title: 'Iframe' },
         { id: 3, type: 'image', src: 'media/evento.webp', title: 'Slide 3' },
       ],
       currentIndex: 0,
@@ -79,9 +84,28 @@ export default {
 }
 
 .carrusel-div {
+  position: relative;
   width: 100%;
-  text-align: center;
+  height: 500px; /* o automàtic si ho gestiones diferent */
+  overflow: hidden;
 }
+
+.slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  opacity: 0;
+  transition: opacity 0.8s ease-in-out;
+  pointer-events: none;
+}
+
+.slide.active {
+  opacity: 1;
+  pointer-events: auto;
+  z-index: 1;
+}
+
 
 .carrusel-img,
 .carrusel-iframe {
@@ -109,10 +133,10 @@ export default {
 }
 
 .carrusel-btn.left {
-  left: 10px;
+  left: 50px;
 }
 
 .carrusel-btn.right {
-  right: 10px;
+  right: 50px;
 }
 </style>
