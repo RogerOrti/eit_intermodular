@@ -16,4 +16,6 @@ WORKDIR /var/www
 
 COPY laravelapp/ .
 
+RUN chown -R www-data:www-data storage bootstrap/cache
+
 RUN composer install
