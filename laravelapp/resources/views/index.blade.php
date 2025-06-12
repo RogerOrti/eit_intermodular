@@ -4,6 +4,7 @@
 
 @section('contingut')
     <main class="main-general" id="app">
+        <p>HOLA</p> 
         <div class="container-general centrar-elementos">
             <div class="titulo">
                 <h1>ORGANITZACIÓ D'ESDEVENIMENTS</h1>
